@@ -525,13 +525,13 @@ def make_default_config():
             },
             {
                 "timer_name": "雪花",
-                "key": "insert",
+                "key": "Insert",
                 "mode": "stop",
                 "time1": 600,
                 "hotkey_action": "reset_start",
                 "image1": "Snowflakes",
                 "image2": None,
-                "sound1": {"file": "補品_雪花", "mode": "once", "advance": 3, "frequency": 1},
+                "sound1": {"file": "補品_雪花", "mode": "once", "advance": 2, "frequency": 1},
                 "sound2": make_default_sound_config(),
             },
             {
@@ -542,7 +542,7 @@ def make_default_config():
                 "hotkey_action": "reset_start",
                 "image1": "TakoyakiJumbo",
                 "image2": None,
-                "sound1": {"file": "補品_章魚燒", "mode": "once", "advance": 3, "frequency": 1},
+                "sound1": {"file": "補品_章魚燒", "mode": "once", "advance": 2, "frequency": 1},
                 "sound2": make_default_sound_config(),
             },
             {
@@ -553,7 +553,7 @@ def make_default_config():
                 "hotkey_action": "reset_start",
                 "image1": "dexterity-pill",
                 "image2": None,
-                "sound1": {"file": "補品_迴避藥丸", "mode": "once", "advance": 3, "frequency": 1},
+                "sound1": {"file": "補品_迴避藥丸", "mode": "once", "advance": 2, "frequency": 1},
                 "sound2": make_default_sound_config(),
             },
             {
@@ -564,7 +564,7 @@ def make_default_config():
                 "hotkey_action": "reset_start",
                 "image1": "pain-reliever",
                 "image2": None,
-                "sound1": {"file": "補品_止痛劑", "mode": "once", "advance": 3, "frequency": 1},
+                "sound1": {"file": "補品_止痛劑", "mode": "once", "advance": 2, "frequency": 1},
                 "sound2": make_default_sound_config(),
             },
             {
