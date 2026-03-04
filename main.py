@@ -2,7 +2,7 @@
 倒數計時器 主程式
 Countdown_Timer_plus - Main Application
 作者：oo_jump　協作：巴哈_波菜菜菜
-版本：v1.3.0
+版本：v1.3.1
 """
 
 import tkinter as tk
