@@ -1,5 +1,6 @@
-## [點此下載最新版本 v1.3.0 安裝包 (RAR)]
+## [ ⏬ 點此下載最新版本 v1.3.0 安裝包 ]
 https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.0/Countdown_Timer_plus_v1.3.0.rar
+
 
 > 版本：v1.3.0 | 作者：oo_jump | 協作：巴哈_波菜菜菜 | 平台：Windows
 
@@ -9,7 +10,7 @@ https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.0/Coun
 
 ## 📋 專案簡介
 
-為遊戲實況/副本挑戰設計的多組倒數計時器，支援懸浮窗顯示、全域快捷鍵、音效提示、圖示閃爍等功能。
+以 AI 撰寫的程序，為遊戲/副本挑戰設計的多組倒數計時器，支援懸浮窗顯示、全域快捷鍵、音效提示、圖示閃爍等功能。
 
 ---
 
