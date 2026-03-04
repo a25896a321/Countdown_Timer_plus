@@ -1,7 +1,7 @@
 
 > 版本：v1.3.0 | 作者：oo_jump | 協作：巴哈_波菜菜菜 | 平台：Windows
 
-# 倒數計時器 Plus (Countdown_Timer_plus)
+# 倒數計時器 Plus (Countdown_Timer_plus_v1.3.0)
 
 ---
 
@@ -149,7 +149,7 @@ for i in range(frequency):
 
 ```bash
 pip install pyinstaller Pillow
-pyinstaller --onefile --windowed --name Countdown_Timer_plus \
+pyinstaller --onefile --windowed --name Countdown_Timer_plus_v1.3.0 \
     --add-data "sound_type;sound_type" \
     --add-data "png_type;png_type" \
     main.py
@@ -157,9 +157,8 @@ pyinstaller --onefile --windowed --name Countdown_Timer_plus \
 
 打包後結構：
 ```
-dist/Countdown_Timer_plus/
-├── Countdown_Timer_plus.exe
-├── ico_timer.ico
+dist/Countdown_Timer_plus_v1.3.0/
+├── Countdown_Timer_plus_v1.3.0.exe
 ├── sound_type/
 └── png_type/
 ```
@@ -218,11 +217,10 @@ pip install -r requirements.txt
 - [x] `total_elapsed = max(0.0, ...)` 防禦 NTP 時鐘回撥
 
 ### v1.3.0（2026-03-04）
-- [x] 專案更名：`Countdown_Timer_plus`，協作者：巴哈_波菜菜菜
+- [x] 專案更名：`Countdown_Timer_plus_v1.3.0`，協作者：巴哈_波菜菜菜
 - [x] 懸浮窗設定新增「顯示圖片」勾選框（預設開啟），關閉後僅顯示數字與名稱
-- [x] 拖曳把手與齒輪按鈕支援自訂圖檔（`Set_Arrow_keys` / `Set_gear`），找不到圖檔時退回文字符號
+- [x] 新增齒輪按鈕並且支援自訂圖檔（`Set_Arrow_keys` / `Set_gear`），找不到圖檔時退回文字符號
 - [x] 主視窗計時列「模式」欄改為文字顯示（自動循環 / 倒數後停止 / 雙回合切換）
-- [x] 新增模擬測試腳本 `test_timer_simulation.py`：5 項場景驗證 Epoch 計時精度
 
 ---
 
