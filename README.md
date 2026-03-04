@@ -26,9 +26,7 @@ New_Countdown_Timer/
 ├── countdown_config.json   執行時自動產生的設定檔
 ├── requirements.txt        Python 依賴套件（開發用）
 ├── sound_type/             音效資料夾（使用者可自行放入 .mp3/.wav）
-│   └── *_sq.mp3            檔名含 _sq 的音效才會顯示於列表
 └── png_type/               圖片資料夾（使用者可自行放入 .png/.jpg）
-    ├── *_on.png            含 _on 字尾者為「倒數中」圖示
     └── Set_*.png           Set_ 開頭者為系統保留圖示（拖曳把手、齒輪等）
 
 ```
@@ -273,7 +271,7 @@ pip install -r requirements.txt
 > A: 請以系統管理員身分執行程式。部分系統需要管理員權限才能使用 `GetAsyncKeyState` 全域監聽。
 
 **Q: 音效沒有聲音？**
-> A: 確認 `sound_type/` 資料夾中有音效檔案，且檔名含有 `_sq`（如 `炎-中文-女-瀟瀟1-固定魔方_sq.mp3`），才會顯示於清單中。
+> A: 確認 `sound_type/` 資料夾中有音效檔案，才會顯示於清單中。
 
 **Q: 圖示不顯示？**
 > A: 確認已安裝 `Pillow`（`pip install Pillow`），且圖片放在 `png_type/` 資料夾中。懸浮窗設定中「顯示圖片」需勾選。

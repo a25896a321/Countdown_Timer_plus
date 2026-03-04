@@ -99,9 +99,9 @@ def make_default_config():
     """建立預設完整設定"""
     profiles = [None] * MAX_PROFILES
 
-    # 預設檔1：炎計時使用1
+    # 預設檔1
     profiles[0] = {
-        "name": "炎計時使用",
+        "name": "炎計時1",
         "timers": [
             {
                 "timer_name": "固定魔方",
@@ -128,9 +128,9 @@ def make_default_config():
             },
         ]
     }
-    # 預設檔2：炎計時使用2
+    # 預設檔2
     profiles[1] = {
-        "name": "炎計時使用2",
+        "name": "炎計時2",
         "timers": [
             {
                 "timer_name": "固定魔方",
@@ -156,9 +156,9 @@ def make_default_config():
             },
         ]
     }
-    # 預設檔3：困拉計時使用1（物理推薦配置）
+    # 預設檔3
     profiles[2] = {
-        "name": "困拉計時使用1（物理推薦配置）",
+        "name": "困拉計時1（物理推薦）",
         "timers": [
             {
                 "timer_name": "69%困拉黑水",
@@ -195,9 +195,9 @@ def make_default_config():
             },
         ]
     }
-    # 預設檔4：困拉計時使用2（物理推薦配置）
+    # 預設檔4
     profiles[3] = {
-        "name": "困拉計時使用2（物理推薦配置）",
+        "name": "困拉計時2（物理推薦）",
         "timers": [
             {
                 "timer_name": "69%困拉黑水",
@@ -224,9 +224,9 @@ def make_default_config():
         ]
     }
 
-    # 預設檔5：困拉計時使用3（計時推薦配置）
+    # 預設檔5
     profiles[4] = {
-        "name": "困拉計時使用3（計時推薦配置）",
+        "name": "困拉計時3（計時推薦）",
         "timers": [
             {
                 "timer_name": "69%困拉黑水",
@@ -264,9 +264,9 @@ def make_default_config():
         ]
     }
 
-        # 預設檔6：困拉計時使用4（計時推薦配置）
+        # 預設檔6
     profiles[5] = {
-        "name": "困拉計時使用4（計時推薦配置）",
+        "name": "困拉計時4（計時推薦）",
         "timers": [
             {
                 "timer_name": "69%困拉黑水",
@@ -304,9 +304,9 @@ def make_default_config():
             },
         ]
     }
-        # 預設檔7：困拉計時使用5（全部配置）
+        # 預設檔7
     profiles[6] = {
-        "name": "困拉計時使用5（全部配置）",
+        "name": "困拉計時5（全部）",
         "timers": [
             {
                 "timer_name": "69%困拉黑水",
@@ -367,9 +367,9 @@ def make_default_config():
         ]
     }
 
-    # 預設檔8：buff機使用（全部配置）
+    # 預設檔8
     profiles[7] = {
-        "name": "buff機使用（全部配置）",
+        "name": "buff機（全部）",
         "timers": [
             {
                 "timer_name": "祈禱",
@@ -508,9 +508,9 @@ def make_default_config():
     }
 
 
-    # 預設檔9：槍手日常使用（個人配置）
+    # 預設檔9
     profiles[8] = {
-        "name": "buff機使用（全部配置）",
+        "name": "槍手日常使用（個人配置）",
         "timers": [
             {
                 "timer_name": "祈禱",
