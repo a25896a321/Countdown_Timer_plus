@@ -1,10 +1,10 @@
-## [ ⏬ 點此下載最新版本 v1.3.0 安裝包 ]
-https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.0/Countdown_Timer_plus_v1.3.0.rar
+## [ ⏬ 點此下載最新版本 v1.3.1 安裝包 ]
+https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.1/Countdown_Timer_plus_v1.3.1.rar
 
 
-> 版本：v1.3.0 | 作者：oo_jump | 協作：巴哈_波菜菜菜 | 平台：Windows
+> 版本：v1.3.1 | 作者：oo_jump | 協作：巴哈_波菜菜菜 | 平台：Windows
 
-# 倒數計時器 Plus (Countdown_Timer_plus_v1.3.0)
+# 倒數計時器 Plus (Countdown_Timer_plus_v1.3.1)
 
 ---
 
@@ -150,7 +150,7 @@ for i in range(frequency):
 
 ```bash
 pip install pyinstaller Pillow
-pyinstaller --onefile --windowed --name Countdown_Timer_plus_v1.3.0 \
+pyinstaller --onefile --windowed --name Countdown_Timer_plus_v1.3.1 \
     --add-data "sound_type;sound_type" \
     --add-data "png_type;png_type" \
     main.py
@@ -158,8 +158,8 @@ pyinstaller --onefile --windowed --name Countdown_Timer_plus_v1.3.0 \
 
 打包後結構：
 ```
-dist/Countdown_Timer_plus_v1.3.0/
-├── Countdown_Timer_plus_v1.3.0.exe
+dist/Countdown_Timer_plus_v1.3.1/
+├── Countdown_Timer_plus_v1.3.1.exe
 ├── sound_type/
 └── png_type/
 ```
@@ -216,6 +216,11 @@ pip install -r requirements.txt
 - [x] `timer_engine.py` 新增 `update_interval` 可切換（高延遲 0.3s / 低延遲 0.1s）
 - [x] 主視窗新增「更新延遲」切換按鈕，清楚標示目前使用的延遲模式
 - [x] `total_elapsed = max(0.0, ...)` 防禦 NTP 時鐘回撥
+
+### v1.3.1（2026-03-05）
+- [x] 修正雪花快捷鍵錯誤失效問題，將 `insert` 修正為 `Insert`
+- [x] 多組計時管理中的 `png_type` 以及 `sound_type` 下拉清單，聚焦時即時更新
+- [x] 設定檔列表從 10 個設定檔項目，增加上限至 12 個
 
 ### v1.3.0（2026-03-04）
 - [x] 專案更名：`Countdown_Timer_plus_v1.3.0`，協作者：巴哈_波菜菜菜

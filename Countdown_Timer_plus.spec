@@ -28,7 +28,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='Countdown_Timer_plus_v1.3.0',
+    name='Countdown_Timer_plus',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

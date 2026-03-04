@@ -1,7 +1,7 @@
 """
 設定檔管理模組
 負責讀取、儲存、匯入、匯出設定檔
-支援最多 10 個設定檔插槽
+支援最多 12 個設定檔插槽
 """
 
 import json
@@ -30,7 +30,7 @@ def get_data_dir() -> str:
 
 
 CONFIG_FILE = "countdown_config.json"
-MAX_PROFILES = 10
+MAX_PROFILES = 12
 
 
 def make_default_sound_config():

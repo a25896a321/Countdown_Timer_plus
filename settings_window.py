@@ -804,6 +804,8 @@ class TimerMgrWindow:
         cb = ttk.Combobox(r, textvariable=var, values=img_files,
                           state="readonly", width=30,
                           font=(ff, 9), style="Dark.TCombobox")
+        cb.bind("<FocusIn>", lambda e, c=cb: c.config(
+            values=["（無）"] + self.config_manager.get_png_files()))
         cb.pack(side=tk.LEFT, padx=4)
 
         # 🔎 瀏覽按鈕：點擊後顯示所選圖片的懸浮預覽
@@ -953,6 +955,8 @@ class TimerMgrWindow:
         cb_snd = ttk.Combobox(r, textvariable=var_snd, values=snd_files,
                               state="readonly", width=28, font=(ff, 9),
                               style="Dark.TCombobox")
+        cb_snd.bind("<FocusIn>", lambda e, c=cb_snd: c.config(
+            values=["（無）"] + self.config_manager.get_sound_files()))
         cb_snd.pack(side=tk.LEFT, padx=4)
         make_btn(r, self.t("btn_test_sound"),
                  lambda s=var_snd: self._test_sound(s.get()),
