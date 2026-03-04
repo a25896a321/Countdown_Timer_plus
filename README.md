@@ -1,4 +1,5 @@
-## 下載：[點此下載最新版本安裝包 (RAR)]https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.0/Countdown_Timer_plus_v1.3.0.rar
+## [點此下載最新版本 v1.3.0 安裝包 (RAR)]
+https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.0/Countdown_Timer_plus_v1.3.0.rar
 
 > 版本：v1.3.0 | 作者：oo_jump | 協作：巴哈_波菜菜菜 | 平台：Windows
 
