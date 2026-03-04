@@ -1,0 +1,27 @@
+# Python 編譯快取
+__pycache__/
+*.py[cod]
+*.pyo
+
+# PyInstaller 打包產物
+build/
+dist/
+*.spec
+
+# 個人設定檔（含使用者快捷鍵/設定檔資料，不納入版本控制）
+countdown_config.json
+
+# 測試腳本（不需發布）
+test_timer_simulation.py
+
+# 常見開發工具產物
+.venv/
+venv/
+.env
+*.egg-info/
+.idea/
+.vscode/
+*.swp
+*.swo
+Thumbs.db
+.DS_Store

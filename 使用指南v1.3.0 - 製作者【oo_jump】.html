@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>倒數計時器 Plus — 使用者操作說明 v1.3.0</title>
+  <style>
+    /* ── 全域 ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #1e1e2e;
+      background: #f5f5fa;
+    }
+
+    /* ── 頁面封面 ── */
+    .cover {
+      background: linear-gradient(135deg, #1e2130 0%, #2d3250 50%, #3a4170 100%);
+      color: #e8eaf6;
+      text-align: center;
+      padding: 72px 40px 60px;
+      page-break-after: always;
+    }
+    .cover .app-icon { font-size: 64px; margin-bottom: 16px; }
+    .cover h1 { font-size: 36px; letter-spacing: 4px; margin-bottom: 10px; }
+    .cover .subtitle { font-size: 16px; color: #9199cc; margin-bottom: 32px; }
+    .cover .meta { display: flex; justify-content: center; gap: 40px; margin-top: 24px; }
+    .cover .meta span { font-size: 13px; color: #b0b8e8; }
+
+    /* ── 版面 ── */
+    .page-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+
+    /* ── 影片說明區塊 ── */
+    .video-banner {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      border-radius: 12px;
+      padding: 28px 40px;
+      margin: 32px 0 0;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      box-shadow: 0 4px 18px rgba(90,107,204,.25);
+    }
+    .video-banner .yt-icon {
+      flex-shrink: 0;
+      width: 56px; height: 56px;
+      background: #ff0000;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+    }
+    .video-banner .yt-body { flex: 1; }
+    .video-banner .yt-label {
+      font-size: 12px; color: #9199cc; margin-bottom: 4px; letter-spacing: 1px;
+    }
+    .video-banner .yt-title {
+      font-size: 15px; font-weight: 700; color: #e8eaf6; line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .video-banner .yt-search {
+      font-size: 12px; color: #9199cc;
+    }
+    .video-banner .yt-search code {
+      background: rgba(255,255,255,.1); color: #c8cfee;
+      padding: 2px 8px; border-radius: 4px; font-size: 11.5px;
+    }
+    .video-banner .yt-btn {
+      flex-shrink: 0;
+      display: inline-block;
+      background: #ff0000;
+      color: #fff;
+      font-size: 13px; font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background .2s;
+    }
+    .video-banner .yt-btn:hover { background: #cc0000; }
+
+    /* ── 目錄 ── */
+    .toc-page {
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px 48px;
+      margin: 40px 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+      page-break-after: always;
+    }
+    .toc-page h2 { font-size: 22px; color: #2d3250; border-bottom: 2px solid #5a6bcc; padding-bottom: 10px; margin-bottom: 24px; }
+    .toc ol { list-style: none; }
+    .toc > ol { padding-left: 0; }
+    .toc > ol > li { margin: 8px 0; font-size: 15px; font-weight: 600; }
+    .toc > ol > li > ol { padding-left: 24px; margin-top: 4px; }
+    .toc > ol > li > ol > li { font-size: 13px; font-weight: 400; margin: 3px 0; }
+    .toc a { color: #3a4170; text-decoration: none; display: flex; justify-content: space-between; align-items: baseline; }
+    .toc a:hover { color: #5a6bcc; text-decoration: underline; }
+    .toc a .dots { flex: 1; border-bottom: 1px dotted #b0b8e8; margin: 0 8px; min-width: 20px; }
+    .toc a .pg { color: #9199cc; font-size: 12px; white-space: nowrap; }
+
+    /* ── 主內容卡片 ── */
+    .section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 36px 48px;
+      margin: 32px 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+      page-break-inside: avoid;
+    }
+    .section-break { page-break-before: always; }
+
+    /* ── 標題 ── */
+    h2 {
+      font-size: 22px; color: #1e2130;
+      border-left: 5px solid #5a6bcc;
+      padding-left: 14px; margin-bottom: 20px;
+      margin-top: 4px;
+    }
+    h3 {
+      font-size: 16px; color: #2d3250;
+      border-bottom: 1px solid #e0e4f0;
+      padding-bottom: 6px; margin: 22px 0 12px;
+    }
+    h4 { font-size: 14px; color: #3a4170; margin: 16px 0 8px; }
+
+    /* ── 段落 ── */
+    p { margin: 10px 0; }
+
+    /* ── 表格 ── */
+    table {
+      width: 100%; border-collapse: collapse;
+      margin: 14px 0; font-size: 13.5px;
+    }
+    th {
+      background: #2d3250; color: #e8eaf6;
+      padding: 10px 14px; text-align: left;
+      font-weight: 600; font-size: 13px;
+    }
+    td { padding: 9px 14px; border-bottom: 1px solid #e8ecf5; vertical-align: top; }
+    tr:nth-child(even) td { background: #f7f8fd; }
+    tr:hover td { background: #eef0fa; }
+    td:first-child { font-weight: 600; white-space: nowrap; color: #2d3250; }
+
+    /* ── 程式碼 ── */
+    code {
+      background: #eef0fa; color: #5a6bcc;
+      padding: 1px 6px; border-radius: 4px;
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 13px;
+    }
+    pre {
+      background: #1e2130; color: #c8cfee;
+      border-radius: 8px; padding: 18px 22px;
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 13px; line-height: 1.6;
+      margin: 14px 0; overflow-x: auto;
+    }
+    pre code { background: none; color: inherit; padding: 0; }
+
+    /* ── 提示框 ── */
+    .tip, .warn, .info {
+      border-radius: 8px; padding: 12px 16px;
+      margin: 14px 0; font-size: 13.5px;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .tip  { background: #edfaf1; border-left: 4px solid #2d6a4f; color: #1e4a38; }
+    .warn { background: #fff3e0; border-left: 4px solid #e07b22; color: #6d3e0f; }
+    .info { background: #e8f0ff; border-left: 4px solid #5a6bcc; color: #2d3250; }
+    .tip::before  { content: "💡"; font-size: 16px; flex-shrink: 0; }
+    .warn::before { content: "⚠️"; font-size: 16px; flex-shrink: 0; }
+    .info::before { content: "ℹ️"; font-size: 16px; flex-shrink: 0; }
+
+    /* ── 徽章 ── */
+    .badge {
+      display: inline-block; padding: 2px 9px;
+      border-radius: 20px; font-size: 12px; font-weight: 600;
+      vertical-align: middle;
+    }
+    .badge-green  { background: #d3f9e0; color: #1e6e40; }
+    .badge-gray   { background: #e8ecf5; color: #5a6070; }
+    .badge-blue   { background: #dde5ff; color: #2d4498; }
+    .badge-orange { background: #fff0d8; color: #8a5200; }
+
+    /* ── 模式卡片 ── */
+    .mode-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 14px 0; }
+    .mode-card {
+      border: 1px solid #d8ddf0; border-radius: 10px;
+      padding: 16px; text-align: center;
+    }
+    .mode-card .icon { font-size: 28px; margin-bottom: 8px; }
+    .mode-card h4 { border: none; margin: 0 0 6px; font-size: 14px; color: #2d3250; }
+    .mode-card p  { font-size: 12.5px; color: #666; margin: 0; }
+
+    /* ── 列表 ── */
+    ul, ol { padding-left: 22px; margin: 10px 0; }
+    li { margin: 5px 0; }
+
+    /* ── 分隔線 ── */
+    hr { border: none; border-top: 1px solid #e0e4f0; margin: 24px 0; }
+
+    /* ── 頁尾 ── */
+    .footer {
+      text-align: center; color: #9199cc; font-size: 12px;
+      padding: 40px 0 20px;
+    }
+
+    /* ── 列印 / PDF ── */
+    @media print {
+      body { background: #fff; font-size: 12px; }
+      .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .section { box-shadow: none; border: 1px solid #e0e4f0; }
+      .toc-page { box-shadow: none; border: 1px solid #e0e4f0; }
+      .tip, .warn, .info { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      a { color: inherit; text-decoration: none; }
+      .toc a .pg { display: inline; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════ 封面 ═══════════════════════ -->
+<div class="cover">
+  <div class="app-icon">🕐</div>
+  <h1>倒數計時器 Plus</h1>
+  <p class="subtitle">Countdown_Timer_plus — 使用者操作說明</p>
+  <div class="meta">
+    <span>版本：v1.3.0</span>
+    <span>作者：oo_jump　｜　協作：巴哈_波菜菜菜</span>
+    <span>平台：Windows 10+</span>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+<!-- ═══════════════════════ 影片說明 ═══════════════════════ -->
+<div class="video-banner">
+  <div class="yt-icon">▶</div>
+  <div class="yt-body">
+    <div class="yt-label">📹 說明教學（影片連結）</div>
+    <div class="yt-title">【 楓之谷 Artale 】倒數計時器！Boss技能、人物技能、機制倒數！快捷鍵計時器！</div>
+    <div class="yt-search">連結失效請搜尋：<code>【 楓之谷 Artale 】倒數計時器！Boss技能、人物技能、機制倒數！快捷鍵計時器！</code></div>
+  </div>
+  <a class="yt-btn" href="https://youtu.be/3bWsJv_xkcw" target="_blank">前往觀看 ▶</a>
+</div>
+
+<!-- ═══════════════════════ 目錄 ═══════════════════════ -->
+<div class="toc-page">
+  <h2>📋 目錄</h2>
+  <nav class="toc">
+    <ol>
+      <li><a href="#s1"><span>1. 程式簡介</span><span class="dots"></span><span class="pg">§1</span></a></li>
+      <li><a href="#s2"><span>2. 系統需求與安裝</span><span class="dots"></span><span class="pg">§2</span></a></li>
+      <li>
+        <a href="#s3"><span>3. 主介面說明</span><span class="dots"></span><span class="pg">§3</span></a>
+        <ol>
+          <li><a href="#s3-1"><span>3.1 頂部提示列</span><span class="dots"></span><span class="pg">§3.1</span></a></li>
+          <li><a href="#s3-2"><span>3.2 功能按鈕列</span><span class="dots"></span><span class="pg">§3.2</span></a></li>
+          <li><a href="#s3-3"><span>3.3 計時器顯示區</span><span class="dots"></span><span class="pg">§3.3</span></a></li>
+          <li><a href="#s3-4"><span>3.4 透明度拉條</span><span class="dots"></span><span class="pg">§3.4</span></a></li>
+        </ol>
+      </li>
+      <li>
+        <a href="#s4"><span>4. 設定檔管理</span><span class="dots"></span><span class="pg">§4</span></a>
+        <ol>
+          <li><a href="#s4-1"><span>4.1 設定檔插槽（10 組）</span><span class="dots"></span><span class="pg">§4.1</span></a></li>
+          <li><a href="#s4-2"><span>4.2 套用、匯入、匯出、清空</span><span class="dots"></span><span class="pg">§4.2</span></a></li>
+          <li><a href="#s4-3"><span>4.3 設為預設設定檔</span><span class="dots"></span><span class="pg">§4.3</span></a></li>
+          <li><a href="#s4-4"><span>4.4 程序快捷鍵設定</span><span class="dots"></span><span class="pg">§4.4</span></a></li>
+        </ol>
+      </li>
+      <li>
+        <a href="#s5"><span>5. 多組計時管理</span><span class="dots"></span><span class="pg">§5</span></a>
+        <ol>
+          <li><a href="#s5-1"><span>5.1 新增 / 刪除 / 排序計時組</span><span class="dots"></span><span class="pg">§5.1</span></a></li>
+          <li><a href="#s5-2"><span>5.2 計時名稱與快捷鍵</span><span class="dots"></span><span class="pg">§5.2</span></a></li>
+          <li><a href="#s5-3"><span>5.3 倒數模式</span><span class="dots"></span><span class="pg">§5.3</span></a></li>
+          <li><a href="#s5-4"><span>5.4 快捷鍵功能</span><span class="dots"></span><span class="pg">§5.4</span></a></li>
+          <li><a href="#s5-5"><span>5.5 圖示效果模式</span><span class="dots"></span><span class="pg">§5.5</span></a></li>
+          <li><a href="#s5-6"><span>5.6 圖片設定</span><span class="dots"></span><span class="pg">§5.6</span></a></li>
+          <li><a href="#s5-7"><span>5.7 音效設定</span><span class="dots"></span><span class="pg">§5.7</span></a></li>
+        </ol>
+      </li>
+      <li>
+        <a href="#s6"><span>6. 懸浮窗設定</span><span class="dots"></span><span class="pg">§6</span></a>
+        <ol>
+          <li><a href="#s6-1"><span>6.1 位置與大小</span><span class="dots"></span><span class="pg">§6.1</span></a></li>
+          <li><a href="#s6-2"><span>6.2 顯示控制</span><span class="dots"></span><span class="pg">§6.2</span></a></li>
+          <li><a href="#s6-3"><span>6.3 顏色自訂</span><span class="dots"></span><span class="pg">§6.3</span></a></li>
+          <li><a href="#s6-4"><span>6.4 名稱顯示設定</span><span class="dots"></span><span class="pg">§6.4</span></a></li>
+        </ol>
+      </li>
+      <li><a href="#s7"><span>7. 懸浮窗操作</span><span class="dots"></span><span class="pg">§7</span></a></li>
+      <li><a href="#s8"><span>8. 程序快捷鍵（非計時器啟動）說明</span><span class="dots"></span><span class="pg">§8</span></a></li>
+      <li>
+        <a href="#s9"><span>9. 自訂圖片與音效</span><span class="dots"></span><span class="pg">§9</span></a>
+        <ol>
+          <li><a href="#s9-1"><span>9.1 新增圖片</span><span class="dots"></span><span class="pg">§9.1</span></a></li>
+          <li><a href="#s9-2"><span>9.2 新增音效</span><span class="dots"></span><span class="pg">§9.2</span></a></li>
+        </ol>
+      </li>
+      <li><a href="#s10"><span>10. 常見問題</span><span class="dots"></span><span class="pg">§10</span></a></li>
+    </ol>
+  </nav>
+</div>
+
+<!-- ═══════════════════════ §1 程式簡介 ═══════════════════════ -->
+<div class="section" id="s1">
+  <h2>1. 程式簡介</h2>
+  <p>
+    <strong>倒數計時器</strong>是一款專為需要精準時間掌控的使用者設計的工具，
+    特別適合遊戲攻略、直播計時、技能冷卻管理等使用情境。
+    支援同時管理多組獨立計時器、全螢幕懸浮顯示、全域熱鍵觸發，讓你在不離開遊戲的情況下掌控每一個倒數節點。
+  </p>
+  <h3>主要特色</h3>
+  <table>
+    <tr><th>特色</th><th>說明</th></tr>
+    <tr><td>多組計時器</td><td>最多可同時設定數十組獨立倒數計時器，同時在畫面上顯示</td></tr>
+    <tr><td>全域熱鍵</td><td>在任何視窗前景下（包含遊戲）均可觸發，無需切換視窗</td></tr>
+    <tr><td>懸浮窗模式</td><td>全螢幕遊戲不受干擾，計時圖示始終顯示於最上層</td></tr>
+    <tr><td>圖示顯示</td><td>每組計時器搭配自訂圖片，視覺上一目了然</td></tr>
+    <tr><td>音效提示</td><td>可設定倒數結束前幾秒提前播放提示音效</td></tr>
+    <tr><td>設定檔管理</td><td>最多 10 組設定可隨時切換，支援匯入匯出分享</td></tr>
+    <tr><td>多語言</td><td>支援繁體中文 / English 即時切換</td></tr>
+  </table>
+</div>
+
+<!-- ═══════════════════════ §2 系統需求 ═══════════════════════ -->
+<div class="section" id="s2">
+  <h2>2. 系統需求與安裝</h2>
+  <h3>系統需求</h3>
+  <table>
+    <tr><th>項目</th><th>需求</th></tr>
+    <tr><td>作業系統</td><td>Windows 10 / 11（64位元）</td></tr>
+    <tr><td>建議解析度</td><td>1920×1080 以上</td></tr>
+    <tr><td>其他</td><td>建議以系統管理員身分執行，確保全域熱鍵正常運作</td></tr>
+  </table>
+
+  <h3>安裝方式</h3>
+  <ol>
+    <li>將整個 <code>Countdown_Timer</code> 資料夾放置於任意位置。</li>
+    <li>直接雙擊 <code>Countdown_Timer_plus.exe</code> 執行。</li>
+    <li>無需安裝 Python 或任何額外套件。</li>
+  </ol>
+
+  <h3>目錄結構</h3>
+  <pre><code>Countdown_Timer_plus/
+├── Countdown_Timer_plus.exe  ← 主程式（雙擊執行）
+├── sound_type/               ← 音效檔案資料夾（可自行新增 mp3/wav）
+└── png_type/                 ← 圖片檔案資料夾（可自行新增圖片）</code></pre>
+
+  <div class="warn">請勿移動或刪除 <code>sound_type</code> 和 <code>png_type</code> 資料夾，程式依賴此相對路徑讀取資源。</div>
+
+
+<!-- ═══════════════════════ §3 主介面 ═══════════════════════ -->
+<div class="section section-break" id="s3">
+  <h2>3. 主介面說明</h2>
+  <p>啟動程式後，主視窗分為四個區域（由上至下）：</p>
+
+  <h3 id="s3-1">3.1 頂部提示列</h3>
+  <p>顯示目前的程式狀態：</p>
+  <table>
+    <tr><th>顯示內容</th><th>說明</th></tr>
+    <tr><td>設定檔：XXX</td><td>目前套用的設定檔名稱</td></tr>
+    <tr><td>【已暫停】</td><td>全部計時器已重置暫停（按 F6 觸發）</td></tr>
+    <tr><td>【已停用】</td><td>程式整體已停用，所有熱鍵與計時暫停</td></tr>
+    <tr><td>尚未載入設定檔</td><td>目前無作用中的設定檔，請先套用一個</td></tr>
+  </table>
+
+  <h3 id="s3-2">3.2 功能按鈕列</h3>
+  <table>
+    <tr><th>按鈕</th><th>功能說明</th></tr>
+    <tr><td>📌 置頂</td><td>切換視窗是否永遠顯示於所有視窗最前方</td></tr>
+    <tr><td>💾 設定檔</td><td>開啟設定檔管理視窗（10 組插槽）</td></tr>
+    <tr><td>⚙️ 計時管理</td><td>開啟多組計時器設定視窗</td></tr>
+    <tr><td>🖥 懸浮窗設定</td><td>調整懸浮窗外觀、位置、顏色等</td></tr>
+    <tr><td>❤️ 贊助</td><td>作者支持連結</td></tr>
+    <tr><td>中文 / EN</td><td>即時切換介面語言（繁體中文 / English）</td></tr>
+    <tr><td>✅ 啟用中 / ⛔ 已停用</td><td>程式整體啟用／停用切換（停用時所有計時暫停）</td></tr>
+    <tr><td>⇄ 切換懸浮模式</td><td>切換至懸浮窗模式（隱藏主視窗，顯示懸浮窗）</td></tr>
+  </table>
+
+  <h3 id="s3-3">3.3 計時器顯示區</h3>
+  <p>主視窗中央顯示目前設定檔內所有計時組，每一列顯示：</p>
+  <ul>
+    <li><strong>計時名稱</strong> — 計時組的識別名稱</li>
+    <li><strong>快捷鍵</strong> — 觸發此計時的按鍵，例如 <code>[Numpad/]</code></li>
+    <li><strong>倒數數字</strong> — 即時顯示剩餘秒數（大字體）</li>
+    <li><strong>模式</strong> — 自動循環 ／ 倒數後停止 ／ 雙回合切換</li>
+    <li><strong>回合標示</strong> — 雙回合模式下顯示「回合一」或「回合二」</li>
+  </ul>
+
+  <h3 id="s3-4">3.4 透明度拉條</h3>
+  <p>位於視窗底部，可即時調整主視窗的透明度（<code>0.1</code> 幾乎全透明 ～ <code>1.0</code> 完全不透明）。</p>
+</div>
+
+<!-- ═══════════════════════ §4 設定檔管理 ═══════════════════════ -->
+<div class="section section-break" id="s4">
+  <h2>4. 設定檔管理</h2>
+  <p>點擊 💾 <strong>設定檔</strong> 按鈕開啟管理視窗。視窗左側為插槽列表，右側顯示詳情與操作按鈕。</p>
+
+  <h3 id="s4-1">4.1 設定檔插槽（10 組）</h3>
+  <p>
+    程式提供 <strong>10 個設定檔插槽</strong>（No.1 ～ No.10），每個插槽可獨立儲存一套完整的計時組設定。<br>
+    點選任意插槽，右側詳情欄會顯示該設定檔的所有計時組資訊（名稱、快捷鍵、模式等）。
+  </p>
+  <ul>
+    <li>有 <code>【預設】</code> 標示的插槽，程式啟動時會自動載入</li>
+    <li>空插槽顯示為「（空）」</li>
+  </ul>
+
+  <h3 id="s4-2">4.2 套用、匯入、匯出、清空</h3>
+  <table>
+    <tr><th>按鈕</th><th>說明</th></tr>
+    <tr><td>✅ 套用</td><td>將選取的設定檔套用為目前使用的設定，立即生效</td></tr>
+    <tr><td>📥 匯入</td><td>從 <code>.json</code> 檔案匯入設定（會覆蓋選取的插槽）</td></tr>
+    <tr><td>📤 匯出</td><td>將選取插槽的設定儲存為 <code>.json</code> 檔案（備份或分享用）</td></tr>
+    <tr><td>🗑 清空</td><td>清除該插槽所有計時組設定（<strong>操作不可復原</strong>）</td></tr>
+    <tr><td>✏️ 編輯名稱</td><td>修改設定檔的顯示名稱</td></tr>
+  </table>
+
+  <h3 id="s4-3">4.3 預設設定檔</h3>
+  <p>
+    <strong>插槽 1（No.1）固定為預設設定檔</strong>，程式啟動時自動載入插槽 1 的設定。<br>
+    若插槽 1 為空，啟動時將顯示「尚未載入設定檔」，請手動套用所需插槽。
+  </p>
+  <div class="tip">建議將最常用的設定存放於插槽 1，即可省去每次手動套用的步驟。</div>
+
+  <h3 id="s4-4">4.4 程序快捷鍵設定</h3>
+  <p>設定檔管理視窗的下半部提供三個程序快捷鍵（非計時器啟動）的設定：</p>
+  <table>
+    <tr><th>功能</th><th>預設按鍵</th><th>說明</th></tr>
+    <tr><td>全部暫停</td><td><code>F6</code></td><td>所有計時器回到初始時間並停止倒數</td></tr>
+    <tr><td>啟用／停用</td><td><code>F7</code></td><td>切換程式整體啟用狀態</td></tr>
+    <tr><td>懸浮框開關</td><td><code>F8</code></td><td>切換懸浮窗模式（開啟或關閉懸浮窗）</td></tr>
+  </table>
+  <p><strong>設定方式：</strong> 點擊對應輸入框（輸入框變黃色）→ 按下想要的按鍵 → 自動完成設定。</p>
+  <div class="tip">支援一般鍵盤按鍵、Numpad 數字鍵、功能鍵（F1–F12）、特殊鍵（CapsLock、`、Numpad* 等）。</div>
+</div>
+
+<!-- ═══════════════════════ §5 計時管理 ═══════════════════════ -->
+<div class="section section-break" id="s5">
+  <h2>5. 多組計時管理</h2>
+  <p>點擊 ⚙️ <strong>計時管理</strong> 開啟設定視窗。視窗左側為計時組列表，右側為詳細設定欄。</p>
+
+  <h3 id="s5-1">5.1 新增 / 刪除 / 排序計時組</h3>
+  <table>
+    <tr><th>按鈕</th><th>說明</th></tr>
+    <tr><td>➕ 新增</td><td>在列表末端新增一個預設計時組</td></tr>
+    <tr><td>⬆ 上移</td><td>將選取的計時組向上移動一格</td></tr>
+    <tr><td>⬇ 下移</td><td>將選取的計時組向下移動一格</td></tr>
+    <tr><td>🗑 刪除</td><td>刪除選取的計時組（不可復原）</td></tr>
+  </table>
+  <p>點擊左側列表中的計時組名稱，右側會顯示該組的完整設定供編輯。</p>
+
+  <h3 id="s5-2">5.2 計時名稱與快捷鍵</h3>
+  <ul>
+    <li><strong>計時名稱</strong> — 自由填寫，顯示於主視窗計時列與懸浮窗圖示下方</li>
+    <li><strong>快捷鍵</strong> — 點擊輸入框後按下任意按鍵即完成設定（支援 Numpad 鍵）</li>
+  </ul>
+  <div class="info">快捷鍵採用全域監聽，即使遊戲視窗在前景仍可觸發，無需切換視窗。</div>
+
+  <h3 id="s5-3">5.3 倒數模式</h3>
+  <p>每個計時組可選擇三種倒數行為：</p>
+  <div class="mode-grid">
+    <div class="mode-card">
+      <div class="icon">🔄</div>
+      <h4>自動循環倒數</h4>
+      <p>倒數歸零後自動重新開始，無限循環，適合週期性機制</p>
+    </div>
+    <div class="mode-card">
+      <div class="icon">⏹</div>
+      <h4>倒數後停止</h4>
+      <p>倒數歸零後停止並顯示結束，等待下次手動觸發，適合技能冷卻</p>
+    </div>
+    <div class="mode-card">
+      <div class="icon">⟳</div>
+      <h4>雙回合切換</h4>
+      <p>設定兩個時間，自動交替倒數，適合兩種狀態輪替的機制</p>
+    </div>
+  </div>
+  <div class="tip">
+    <strong>雙回合範例：</strong>機制A持續 40 秒 → 機制B持續 30 秒 → 回到機制A…如此循環。
+  </div>
+
+  <h3 id="s5-4">5.4 快捷鍵功能</h3>
+  <p>按下快捷鍵時的觸發行為（可從兩種選項中選擇）：</p>
+  <table>
+    <tr><th>功能</th><th>說明</th></tr>
+    <tr><td>重置並開始</td><td>無論目前狀態，立即重置計時並重新開始倒數（雙回合模式會回到回合一）</td></tr>
+    <tr><td>開關（關閉會重置）</td><td>未倒數中 → 開始；倒數中 → 重置並停止（適合需要臨時取消的情境）</td></tr>
+  </table>
+
+  <h3 id="s5-5">5.5 圖示效果模式</h3>
+  <p>控制計時圖示的顯示效果，三種模式說明如下：</p>
+  <table>
+    <tr><th>模式</th><th>倒數中</th><th>最後 3 秒</th><th>倒數結束</th><th>適用情境</th></tr>
+    <tr><td><span class="badge badge-blue">預設</span></td><td>彩色原圖</td><td>彩色↔灰階閃爍</td><td>灰階</td><td>一般計時（最後3秒警示）</td></tr>
+    <tr><td><span class="badge badge-orange">冷卻模式</span></td><td>灰階（冷卻中）</td><td>灰階↔彩色閃爍</td><td>彩色原圖（就緒）</td><td>技能冷卻計時</td></tr>
+    <tr><td><span class="badge badge-gray">僅用原圖</span></td><td>彩色原圖</td><td>彩色原圖</td><td>彩色原圖</td><td>純視覺標記，不需灰階效果</td></tr>
+  </table>
+  <div class="tip">
+    <strong>冷卻模式</strong>適合技能冷卻計時：倒數中顯示灰階表示「技能冷卻中」，倒數結束後顯示彩色表示「技能就緒」，直覺易懂。
+  </div>
+
+  <h3 id="s5-6">5.6 圖片設定</h3>
+  <ul>
+    <li>從下拉清單選擇 <code>png_type</code> 資料夾中的圖片</li>
+    <li><strong>🔎 瀏覽</strong> — 點擊後在按鈕旁浮現圖片預覽視窗</li>
+    <li><strong>📂 開啟資料夾</strong> — 直接以檔案總管開啟 <code>png_type</code> 資料夾</li>
+  </ul>
+
+  <h3 id="s5-7">5.7 音效設定</h3>
+  <table>
+    <tr><th>設定項目</th><th>說明</th></tr>
+    <tr><td>音效選擇</td><td>從 <code>sound_type</code> 資料夾中選擇 .mp3 / .wav 音效</td></tr>
+    <tr><td>播放方式：單次播放</td><td>在「倒數結束前 N 秒」時播放一次</td></tr>
+    <tr><td>播放方式：分段播放</td><td>按設定次數，在倒數過程中平均分散播放</td></tr>
+    <tr><td>提前幾秒</td><td>在倒數結束前幾秒觸發音效（例如設定 2 = 剩 2 秒時播放）</td></tr>
+    <tr><td>分段次數</td><td>分段播放模式下，音效共播放幾次</td></tr>
+    <tr><td>▶ 測試</td><td>立即播放所選音效，確認效果</td></tr>
+    <tr><td>📂 開啟資料夾</td><td>以檔案總管開啟 <code>sound_type</code> 資料夾</td></tr>
+  </table>
+</div>
+
+<!-- ═══════════════════════ §6 懸浮窗設定 ═══════════════════════ -->
+<div class="section section-break" id="s6">
+  <h2>6. 懸浮窗設定</h2>
+  <p>點擊 🖥 <strong>懸浮窗設定</strong> 開啟設定視窗，調整完成後點擊 <strong>✅ 套用</strong>（即時生效）或 <strong>💾 儲存</strong>（持久保存）。</p>
+
+  <h3 id="s6-1">6.1 位置與大小</h3>
+  <table>
+    <tr><th>設定</th><th>說明</th></tr>
+    <tr><td>X / Y</td><td>懸浮窗初始出現的螢幕座標（左上角為 0,0）</td></tr>
+    <tr><td>圖示大小（像素）</td><td>每個計時圖示的顯示尺寸（建議 48 ～ 96 px）</td></tr>
+    <tr><td>圖示間距（像素）</td><td>相鄰計時組之間的水平間距</td></tr>
+    <tr><td>懸浮框透明度</td><td>整體透明度（0.1 幾乎全透明 ～ 1.0 完全不透明）</td></tr>
+  </table>
+
+  <h3 id="s6-2">6.2 顯示控制（勾選框）</h3>
+  <table>
+    <tr><th>選項</th><th>預設</th><th>說明</th></tr>
+    <tr><td>顯示拖曳手把</td><td><span class="badge badge-green">✓ 開啟</span></td><td>懸浮窗左上角的移動圖示，長按可拖曳移動懸浮窗位置</td></tr>
+    <tr><td>顯示設定齒輪</td><td><span class="badge badge-green">✓ 開啟</span></td><td>懸浮窗左上角的 ⚙ 按鈕，點擊可返回主視窗</td></tr>
+    <tr><td>顯示背景底色</td><td><span class="badge badge-gray">✗ 關閉</span></td><td>是否顯示懸浮窗的整體背景色塊</td></tr>
+    <tr><td>顯示數字背景</td><td><span class="badge badge-gray">✗ 關閉</span></td><td>倒數數字是否加背景色塊</td></tr>
+    <tr><td>顯示名稱背景</td><td><span class="badge badge-green">✓ 開啟</span></td><td>計時名稱文字是否加背景色塊</td></tr>
+    <tr><td>隱藏未使用倒數</td><td><span class="badge badge-gray">✗ 關閉</span></td><td>勾選後，未啟動的計時組自動隱藏，倒數開始後才出現</td></tr>
+    <tr><td>顯示圖片</td><td><span class="badge badge-green">✓ 開啟</span></td><td>是否顯示計時圖示；關閉後僅顯示倒數數字與計時名稱，適合純文字模式</td></tr>
+  </table>
+
+  <h3 id="s6-3">6.3 顏色自訂</h3>
+  <p>點擊各顏色方塊可開啟系統色盤選色：</p>
+  <table>
+    <tr><th>顏色設定</th><th>說明</th></tr>
+    <tr><td>背景顏色</td><td>懸浮窗背景底色（需勾選「顯示背景底色」才可見）</td></tr>
+    <tr><td>數字背景顏色</td><td>倒數數字的背景色（需勾選「顯示數字背景」才可見）</td></tr>
+    <tr><td>名稱背景顏色</td><td>計時名稱的背景色（需勾選「顯示名稱背景」才可見）</td></tr>
+    <tr><td>數字顏色</td><td>倒數秒數的字體顏色</td></tr>
+    <tr><td>名稱顏色</td><td>計時名稱的字體顏色</td></tr>
+  </table>
+
+  <h3 id="s6-4">6.4 名稱顯示設定</h3>
+  <p><strong>名稱顯示位置</strong>（5 種選項）：</p>
+  <table>
+    <tr><th>選項</th><th>效果</th></tr>
+    <tr><td>圖片上方（外）</td><td>名稱顯示於圖示正上方，圖示下方有倒數數字</td></tr>
+    <tr><td>圖片下方（外）</td><td>名稱顯示於圖示正下方（預設）</td></tr>
+    <tr><td>圖片內中間</td><td>名稱文字疊加於圖示的中央位置</td></tr>
+    <tr><td>圖片內上方</td><td>名稱文字疊加於圖示的上緣</td></tr>
+    <tr><td>圖片內下方</td><td>名稱文字疊加於圖示的下緣</td></tr>
+  </table>
+  <p><strong>名稱對齊方式</strong>（3 種選項）：靠左 / 置中（預設） / 靠右</p>
+</div>
+
+<!-- ═══════════════════════ §7 懸浮窗操作 ═══════════════════════ -->
+<div class="section" id="s7">
+  <h2>7. 懸浮窗操作</h2>
+  <p>點擊主視窗的 <strong>⇄ 切換懸浮模式</strong> 按鈕，或按 <code>F8</code>（預設），進入懸浮窗模式。</p>
+  <table>
+    <tr><th>操作</th><th>功能</th></tr>
+    <tr><td>長按拖曳手把圖示</td><td>移動懸浮窗至螢幕任意位置（新位置自動儲存）</td></tr>
+    <tr><td>點擊 ⚙ 齒輪圖示</td><td>返回主視窗（懸浮窗同時關閉）</td></tr>
+    <tr><td>按 F8（預設）</td><td>切換回主視窗 / 重新顯示懸浮窗</td></tr>
+  </table>
+  <h3>懸浮窗顯示說明</h3>
+  <ul>
+    <li>永遠顯示於所有視窗最前方（<strong>全域置頂</strong>）</li>
+    <li>計時圖示由左至右橫向排列，每組間距可在設定中調整</li>
+    <li>每個圖示上方顯示即時倒數秒數（大數字）</li>
+    <li>圖示下方（或其他設定位置）顯示計時名稱</li>
+    <li>倒數最後 3 秒時圖示會開始閃爍警示（依圖示效果模式）</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════ §8 程序快捷鍵 ═══════════════════════ -->
+<div class="section" id="s8">
+  <h2>8. 程序快捷鍵說明</h2>
+  <div class="info">程序快捷鍵（非計時器啟動）在程式停用狀態下仍然有效，確保你隨時都能重置或開關懸浮窗。</div>
+  <table>
+    <tr><th>按鍵（預設）</th><th>功能</th><th>備註</th></tr>
+    <tr><td><code>F6</code></td><td>全部暫停</td><td>所有計時器回到初始時間並停止倒數</td></tr>
+    <tr><td><code>F7</code></td><td>啟用／停用</td><td>停用時計時停止，啟用後可重新開始使用</td></tr>
+    <tr><td><code>F8</code></td><td>懸浮窗開關</td><td>切換懸浮窗顯示模式</td></tr>
+    <tr><td>（各計時組自訂鍵）</td><td>觸發對應計時器</td><td>依設定的「快捷鍵功能」執行重置或開關</td></tr>
+  </table>
+  <p>以上預設按鍵可在 💾 <strong>設定檔</strong> 視窗的「程序快捷鍵設定」區塊中自訂更改。</p>
+</div>
+
+<!-- ═══════════════════════ §9 自訂圖片音效 ═══════════════════════ -->
+<div class="section section-break" id="s9">
+  <h2>9. 自訂圖片與音效</h2>
+
+  <h3 id="s9-1">9.1 新增圖片</h3>
+  <ol>
+    <li>將圖片（<code>.png</code> / <code>.jpg</code> / <code>.jpeg</code> / <code>.gif</code>）放入 <code>png_type</code> 資料夾</li>
+    <li>可在 <code>png_type</code> 內建立子資料夾分類，程式會自動遞迴掃描</li>
+    <li>重新開啟計時管理設定視窗，新圖片即出現在下拉清單中</li>
+  </ol>
+
+  <h3 id="s9-2">9.2 新增音效</h3>
+  <ol>
+    <li>將音效（<code>.mp3</code> / <code>.wav</code>）放入 <code>sound_type</code> 資料夾</li>
+    <li>可在 <code>sound_type</code> 內建立子資料夾分類</li>
+    <li>重新開啟計時管理設定視窗，新音效即出現在下拉清單中</li>
+  </ol>
+  <div class="tip">建議使用清晰、簡短的語音提示音效，搭配「提前幾秒」設定，達到最佳提示效果。</div>
+</div>
+
+<!-- ═══════════════════════ §10 常見問題 ═══════════════════════ -->
+<div class="section" id="s10">
+  <h2>10. 常見問題</h2>
+
+  <h3>Q：全域熱鍵沒有反應？</h3>
+  <p><strong>A：</strong>請以「系統管理員身分」重新執行程式。右鍵點擊 <code>Countdown_Timer_plus.exe</code> → <strong>以系統管理員身分執行</strong>。</p>
+
+  <h3>Q：音效無法播放？</h3>
+  <p><strong>A：</strong>確認音效檔案格式為 <code>.mp3</code> 或 <code>.wav</code>，且已放置於 <code>sound_type</code> 資料夾內。可使用「▶ 測試」按鈕確認。</p>
+
+  <h3>Q：懸浮窗跑到螢幕外找不到？</h3>
+  <p><strong>A：</strong>在 🖥 <strong>懸浮窗設定</strong> 中，將 X/Y 座標改回螢幕內的數值（例如 X=500, Y=700），再按「✅ 套用」即可。</p>
+
+  <h3>Q：設定檔不見了？</h3>
+  <p><strong>A：</strong>設定儲存於程式同目錄下的 <code>countdown_config.json</code>。若不小心刪除，程式會自動生成內建預設設定。</p>
+
+  <h3>Q：如何備份我的設定？</h3>
+  <p><strong>A：</strong>使用 💾 <strong>設定檔</strong> → <strong>📤 匯出</strong>，將設定儲存為 <code>.json</code> 檔案，可備份也可分享給其他人使用。</p>
+
+  <h3>Q：程式更新後設定會消失嗎？</h3>
+  <p><strong>A：</strong>不會。只要 <code>countdown_config.json</code> 與新版 <code>Countdown_Timer_plus.exe</code> 放在同一資料夾，設定即自動繼承。</p>
+
+  <h3>Q：計時器精度如何？</h3>
+  <p><strong>A：</strong>程式每 0.3 秒更新一次，顯示秒數採四捨五入，時間計算使用系統時間戳差值，避免誤差累積，精度可達 ±0.3 秒。</p>
+
+  <hr/>
+  <div class="footer">
+    <p>感謝使用倒數計時器 Plus！如有問題或建議，歡迎聯繫作者。</p>
+    <p style="margin-top:6px;">作者：oo_jump　｜　協作：巴哈_波菜菜菜　｜　版本：v1.3.0</p>
+  </div>
+</div>
+
+</div><!-- end page-wrap -->
+</body>
+</html>
