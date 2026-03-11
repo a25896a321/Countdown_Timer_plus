@@ -481,6 +481,7 @@ class TimerMgrWindow:
         self._editing_timer = None
         self._hk_capture = None
         self._preview_win = None   # 圖片預覽浮窗（同時只存一個）
+        self._local_timers = None  # 記憶體工作副本（關閉前比對用）
 
     def t(self, key):
         return get_text(self.lang, key)
@@ -555,6 +556,7 @@ class TimerMgrWindow:
         op_frame = tk.Frame(left, bg=THEME["bg"])
         op_frame.pack(fill=tk.X, pady=(6, 0))
         btn_defs = [
+            ("btn_save_all_timers", THEME["accent"], self._save_all_timers),
             ("btn_add_timer", THEME["success"], self._add_timer),
             ("btn_move_up", THEME["btn"], self._move_up),
             ("btn_move_down", THEME["btn"], self._move_down),
@@ -593,6 +595,7 @@ class TimerMgrWindow:
         self._canvas = canvas
         self._font_family = font_family
         self._populate_timer_list()
+        self._local_timers = copy.deepcopy(self._get_current_timers())
         self._build_config_panel(None)
 
         win.update_idletasks()
@@ -615,10 +618,13 @@ class TimerMgrWindow:
         if not sel:
             return
         idx = sel[0]
-        timers = self._get_current_timers()
-        if idx < len(timers):
+        # 切換前先將目前 UI 狀態存回本地副本
+        self._snapshot_ui_to_local()
+        if self._local_timers is None:
+            self._local_timers = copy.deepcopy(self._get_current_timers())
+        if idx < len(self._local_timers):
             self._selected_idx = idx
-            self._editing_timer = copy.deepcopy(timers[idx])
+            self._editing_timer = copy.deepcopy(self._local_timers[idx])
             self._build_config_panel(self._editing_timer)
 
     def _build_config_panel(self, timer_cfg):
@@ -778,7 +784,7 @@ class TimerMgrWindow:
             fill=tk.X, padx=6, pady=6)
         btn_row = row_frame()
         make_btn(btn_row, self.t("btn_save_timer"), self._save_timer,
-                 bg=THEME["success"], font=(ff, 10)).pack(side=tk.LEFT, padx=4)
+                 bg=THEME["danger"], font=(ff, 10)).pack(side=tk.LEFT, padx=4)
         make_btn(btn_row, self.t("btn_cancel_timer"), self._cancel_edit,
                  font=(ff, 10)).pack(side=tk.LEFT, padx=4)
 
@@ -1074,7 +1080,7 @@ class TimerMgrWindow:
             return
 
         try:
-            t1 = int(self._v_time1.get())
+            t1 = round(float(self._v_time1.get()), 2)
             assert t1 > 0
         except Exception:
             messagebox.showwarning(self.t("warning_title"), self.t("timer_invalid_time"),
@@ -1082,10 +1088,10 @@ class TimerMgrWindow:
             return
 
         mode = self._v_mode.get()
-        t2 = 30
+        t2 = 30.0
         if mode == "dual":
             try:
-                t2 = int(self._v_time2.get())
+                t2 = round(float(self._v_time2.get()), 2)
                 assert t2 > 0
             except Exception:
                 messagebox.showwarning(self.t("warning_title"), self.t("timer_invalid_time"),
@@ -1132,6 +1138,8 @@ class TimerMgrWindow:
         else:
             timers.append(timer_data)
         self._save_timers(timers)
+        # 同步更新本地副本
+        self._local_timers = copy.deepcopy(timers)
         self.app.on_timers_changed()
         self._populate_timer_list()
         messagebox.showinfo(self.t("info_title"), self.t("timer_save_success"), parent=self._win)
@@ -1143,11 +1151,13 @@ class TimerMgrWindow:
         self.timer_lb.selection_clear(0, tk.END)
 
     def _add_timer(self):
+        self._snapshot_ui_to_local()
         timers = self._get_current_timers()
         new_timer = make_default_timer()
         new_timer["timer_name"] = f"計時 {len(timers)+1}"
         timers.append(new_timer)
         self._save_timers(timers)
+        self._local_timers = copy.deepcopy(timers)
         self._populate_timer_list()
         self.timer_lb.selection_clear(0, tk.END)
         idx = len(timers) - 1
@@ -1161,10 +1171,12 @@ class TimerMgrWindow:
         sel = self.timer_lb.curselection()
         if not sel or sel[0] == 0:
             return
+        self._snapshot_ui_to_local()
         idx = sel[0]
         timers = self._get_current_timers()
         timers[idx-1], timers[idx] = timers[idx], timers[idx-1]
         self._save_timers(timers)
+        self._local_timers = copy.deepcopy(timers)
         self._populate_timer_list()
         self.timer_lb.selection_set(idx-1)
         self._selected_idx = idx - 1
@@ -1174,9 +1186,11 @@ class TimerMgrWindow:
         timers = self._get_current_timers()
         if not sel or sel[0] >= len(timers) - 1:
             return
+        self._snapshot_ui_to_local()
         idx = sel[0]
         timers[idx], timers[idx+1] = timers[idx+1], timers[idx]
         self._save_timers(timers)
+        self._local_timers = copy.deepcopy(timers)
         self._populate_timer_list()
         self.timer_lb.selection_set(idx+1)
         self._selected_idx = idx + 1
@@ -1192,11 +1206,91 @@ class TimerMgrWindow:
         timers = self._get_current_timers()
         del timers[idx]
         self._save_timers(timers)
+        self._local_timers = copy.deepcopy(timers)
         self.app.on_timers_changed()
         self._selected_idx = None
         self._editing_timer = None
         self._populate_timer_list()
         self._build_config_panel(None)
+
+    def _snapshot_ui_to_local(self):
+        """將目前 UI 欄位值存回 _local_timers[_selected_idx]（不驗證、不寫設定檔）"""
+        if self._selected_idx is None or self._local_timers is None:
+            return
+        if not hasattr(self, '_v_name'):
+            return
+        idx = self._selected_idx
+        if idx >= len(self._local_timers):
+            return
+        entry = self._local_timers[idx]
+        entry['timer_name'] = self._v_name.get().strip() if hasattr(self, '_v_name') else entry.get('timer_name', '')
+        if self._editing_timer is not None:
+            entry['key'] = self._editing_timer.get('key')
+        if hasattr(self, '_v_mode'):
+            entry['mode'] = self._v_mode.get()
+        if hasattr(self, '_v_time1'):
+            try:
+                t1 = round(float(self._v_time1.get()), 2)
+                if t1 > 0:
+                    entry['time1'] = t1
+            except Exception:
+                pass
+        if hasattr(self, '_v_time2'):
+            try:
+                t2 = round(float(self._v_time2.get()), 2)
+                if t2 > 0:
+                    entry['time2'] = t2
+            except Exception:
+                pass
+        if hasattr(self, '_v_action'):
+            entry['hotkey_action'] = self._v_action.get()
+        if hasattr(self, '_v_image_mode'):
+            entry['image_mode'] = self._v_image_mode.get()
+        if hasattr(self, '_v_img1'):
+            img1 = self._v_img1.get()
+            entry['image1'] = None if img1 in ("（無）", "") else img1
+        if hasattr(self, '_v_img2'):
+            img2 = self._v_img2.get()
+            entry['image2'] = None if img2 in ("（無）", "") else img2
+
+        def _collect_snd(snd_attr, mode_attr, adv_attr, freq_attr):
+            snd_var  = getattr(self, snd_attr,  None)
+            mode_var = getattr(self, mode_attr, None)
+            adv_var  = getattr(self, adv_attr,  None)
+            freq_var = getattr(self, freq_attr, None)
+            if snd_var is None:
+                return None
+            f = snd_var.get().strip()
+            if not f or f == "（無）":
+                return make_default_sound_config()
+            try:
+                adv = max(0, int(adv_var.get())) if adv_var and adv_var.get().isdigit() else 2
+            except Exception:
+                adv = 2
+            try:
+                freq = max(1, int(freq_var.get())) if freq_var and freq_var.get().isdigit() else 1
+            except Exception:
+                freq = 1
+            return {"file": f, "mode": mode_var.get() if mode_var else "once",
+                    "advance": adv, "frequency": freq}
+
+        s1 = _collect_snd('_v_snd1', '_v_sndmode1', '_v_sndadv1', '_v_sndfreq1')
+        if s1 is not None:
+            entry['sound1'] = s1
+        s2 = _collect_snd('_v_snd2', '_v_sndmode2', '_v_sndadv2', '_v_sndfreq2')
+        if s2 is not None:
+            entry['sound2'] = s2
+
+    def _save_all_timers(self):
+        """快照目前 UI → 將 _local_timers 全部寫入設定檔"""
+        self._snapshot_ui_to_local()
+        if self._local_timers is None:
+            return
+        self._save_timers(self._local_timers)
+        self._local_timers = copy.deepcopy(self._get_current_timers())
+        self.app.on_timers_changed()
+        self._populate_timer_list()
+        messagebox.showinfo(self.t("info_title"), self.t("timer_all_save_success"), parent=self._win)
 
     def _test_sound(self, sound_name: str):
         if sound_name and sound_name != "（無）":
@@ -1217,6 +1311,17 @@ class TimerMgrWindow:
         os.startfile(folder)
 
     def _on_close(self):
+        # 比對是否有未儲存的修改
+        self._snapshot_ui_to_local()
+        if self._local_timers is not None:
+            import json as _json
+            saved = self._get_current_timers()
+            if _json.dumps(self._local_timers, sort_keys=True, default=str) != \
+               _json.dumps(saved, sort_keys=True, default=str):
+                if not messagebox.askyesno(self.t("confirm_title"),
+                                           self.t("unsaved_changes_prompt"),
+                                           parent=self._win):
+                    return
         if self._hk_capture:
             try:
                 self._hk_capture.stop()
@@ -1232,6 +1337,7 @@ class TimerMgrWindow:
         if self._win:
             self._win.destroy()
             self._win = None
+        self._local_timers = None
         self.app.on_settings_closed()
 
 

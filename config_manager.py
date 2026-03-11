@@ -158,12 +158,12 @@ def make_default_config():
     }
     # 預設檔3
     profiles[2] = {
-        "name": "困拉計時1（物理推薦）",
+        "name": "困拉1（物理用）",
         "timers": [
             {
                 "timer_name": "69%困拉黑水",
                 "key": "`",
-                "mode": "loop",
+                "mode": "stop",
                 "time1": 60,
                 "hotkey_action": "reset_start",
                 "image1": "Papulatus(Hard)_Poison pit",
@@ -174,10 +174,10 @@ def make_default_config():
             {
                 "timer_name": "84%玩家炸彈",
                 "key": "Tab",
-                "mode": "loop",
+                "mode": "stop",
                 "time1": 25,
                 "hotkey_action": "reset_start",
-                "image1": "Papulatus(Hard)_boom alarm",
+                "image1": "Papulatus(Hard)_boom alarm2",
                 "image2": None,
                 "sound1": {"file": "困拉-中文-女-瀟瀟1_頭頂炸彈", "mode": "once", "advance": 1, "frequency": 1},
                 "sound2": make_default_sound_config(),
@@ -185,7 +185,7 @@ def make_default_config():
             {
                 "timer_name": "84%反盾鬧鐘",
                 "key": "CapsLock",
-                "mode": "loop",
+                "mode": "stop",
                 "time1": 80,
                 "hotkey_action": "reset_start",
                 "image1": "Papulatus(Hard)_alarm time",
@@ -197,12 +197,12 @@ def make_default_config():
     }
     # 預設檔4
     profiles[3] = {
-        "name": "困拉計時2（物理推薦）",
+        "name": "困拉2（物理用）",
         "timers": [
             {
                 "timer_name": "69%困拉黑水",
                 "key": "`",
-                "mode": "loop",
+                "mode": "stop",
                 "time1": 60,
                 "hotkey_action": "reset_start",
                 "image1": "Papulatus(Hard)_Poison pit",
@@ -213,7 +213,7 @@ def make_default_config():
             {
                 "timer_name": "84%反盾鬧鐘",
                 "key": "CapsLock",
-                "mode": "loop",
+                "mode": "stop",
                 "time1": 80,
                 "hotkey_action": "reset_start",
                 "image1": "Papulatus(Hard)_alarm time",
@@ -226,24 +226,13 @@ def make_default_config():
 
     # 預設檔5
     profiles[4] = {
-        "name": "困拉計時3（計時推薦）",
+        "name": "困拉3（計時用）",
         "timers": [
-            {
-                "timer_name": "69%困拉黑水",
-                "key": "`",
-                "mode": "loop",
-                "time1": 60,
-                "hotkey_action": "reset_start",
-                "image1": "Papulatus(Hard)_Poison pit",
-                "image2": None,
-                "sound1": {"file": "困拉-中文-女-瀟瀟1_黑水", "mode": "once", "advance": 2, "frequency": 1},
-                "sound2": make_default_sound_config(),
-            },
             {
                 "timer_name": "89%增傷時鐘",
                 "key": "NumPad+",
                 "mode": "loop",
-                "time1": 10,
+                "time1": 9.98,
                 "hotkey_action": "reset_start",
                 "image1": "Papulatus(Hard)_clock",
                 "image2": None,
@@ -261,17 +250,28 @@ def make_default_config():
                 "sound1": {"file": "困拉-中文-女-瀟瀟1_小怪消失", "mode": "once", "advance": 3, "frequency": 1},
                 "sound2": make_default_sound_config(),
             },
+            {
+                "timer_name": "黑球復活13s",
+                "key": "NumPad/",
+                "mode": "stop",
+                "time1": 13,
+                "hotkey_action": "reset_start",
+                "image1": "resurrection",
+                "image2": None,
+                "sound1": {"file": "技能_復活", "mode": "once", "advance": 1, "frequency": 1},
+                "sound2": make_default_sound_config(),
+            },
         ]
     }
 
         # 預設檔6
     profiles[5] = {
-        "name": "困拉計時4（計時推薦）",
+        "name": "困拉4（計時用）",
         "timers": [
             {
                 "timer_name": "69%困拉黑水",
                 "key": "`",
-                "mode": "loop",
+                "mode": "stop",
                 "time1": 60,
                 "hotkey_action": "reset_start",
                 "image1": "Papulatus(Hard)_Poison pit",
@@ -283,7 +283,7 @@ def make_default_config():
                 "timer_name": "89%增傷時鐘",
                 "key": "NumPad+",
                 "mode": "loop",
-                "time1": 10,
+                "time1": 9.98,
                 "hotkey_action": "reset_start",
                 "image1": "Papulatus(Hard)_clock",
                 "image2": None,
@@ -302,6 +302,17 @@ def make_default_config():
                 "sound1": {"file": "困拉-中文-女-瀟瀟1_小怪消失", "mode": "once", "advance": 3, "frequency": 1},
                 "sound2": {"file": "困拉-中文-女-瀟瀟1_召喚小怪", "mode": "once", "advance": 1, "frequency": 1},
             },
+            {
+                "timer_name": "黑球復活13s",
+                "key": "NumPad/",
+                "mode": "stop",
+                "time1": 13,
+                "hotkey_action": "reset_start",
+                "image1": "resurrection",
+                "image2": None,
+                "sound1": {"file": "技能_復活", "mode": "once", "advance": 1, "frequency": 1},
+                "sound2": make_default_sound_config(),
+            },
         ]
     }
         # 預設檔7
@@ -311,7 +322,7 @@ def make_default_config():
             {
                 "timer_name": "69%困拉黑水",
                 "key": "`",
-                "mode": "loop",
+                "mode": "stop",
                 "time1": 60,
                 "hotkey_action": "reset_start",
                 "image1": "Papulatus(Hard)_Poison pit",
@@ -322,7 +333,7 @@ def make_default_config():
             {
                 "timer_name": "84%反盾鬧鐘",
                 "key": "CapsLock",
-                "mode": "loop",
+                "mode": "stop",
                 "time1": 80,
                 "hotkey_action": "reset_start",
                 "image1": "Papulatus(Hard)_alarm time",
@@ -334,7 +345,7 @@ def make_default_config():
                 "timer_name": "89%增傷時鐘",
                 "key": "NumPad+",
                 "mode": "loop",
-                "time1": 10,
+                "time1": 9.98,
                 "hotkey_action": "reset_start",
                 "image1": "Papulatus(Hard)_clock",
                 "image2": None,
@@ -363,6 +374,17 @@ def make_default_config():
                 "image2": "Papulatus(Hard)_little monster disappears",
                 "sound1": {"file": "困拉-中文-女-瀟瀟1_小怪消失", "mode": "once", "advance": 3, "frequency": 1},
                 "sound2": {"file": "困拉-中文-女-瀟瀟1_召喚小怪", "mode": "once", "advance": 1, "frequency": 1},
+            },
+            {
+                "timer_name": "黑球復活13s",
+                "key": "NumPad/",
+                "mode": "stop",
+                "time1": 13,
+                "hotkey_action": "reset_start",
+                "image1": "resurrection",
+                "image2": None,
+                "sound1": {"file": "技能_復活", "mode": "once", "advance": 1, "frequency": 1},
+                "sound2": make_default_sound_config(),
             },
         ]
     }
@@ -504,13 +526,24 @@ def make_default_config():
                 "sound1": {"file": "計時_加倍結束", "mode": "once", "advance": 1, "frequency": 1},
                 "sound2": make_default_sound_config(),
             },
+            {
+                "timer_name": "驚嘆號30s",
+                "key": "F2",
+                "mode": "stop",
+                "time1": 30,
+                "hotkey_action": "reset_start",
+                "image1": "marvel1",
+                "image2": None,
+                "sound1": {"file": "計時_30秒", "mode": "once", "advance": 1, "frequency": 1},
+                "sound2": make_default_sound_config(),
+            },
         ]
     }
 
 
     # 預設檔9
     profiles[8] = {
-        "name": "槍手日常使用（個人配置）",
+        "name": "槍手（個人配置）",
         "timers": [
             {
                 "timer_name": "祈禱",
