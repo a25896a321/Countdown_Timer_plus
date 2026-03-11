@@ -1,6 +1,7 @@
 ## [ ⏬ 點此下載最新版本 v1.3.2 安裝包 ]
 https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.2/Countdown_Timer_plus_v1.3.2.rar
-
+## [ ⏬ 點此下載最新版本 v1.3.1 安裝包 ]
+https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.1/Countdown_Timer_plus_v1.3.1.rar
 
 > 版本：v1.3.2 | 作者：oo_jump | 協作：巴哈_波菜菜菜 | 平台：Windows
 
@@ -217,12 +218,6 @@ pip install -r requirements.txt
 - [x] 主視窗新增「更新延遲」切換按鈕，清楚標示目前使用的延遲模式
 - [x] `total_elapsed = max(0.0, ...)` 防禦 NTP 時鐘回撥
 
-### v1.3.2（2026-03-05）
-- [x] 倒數時間（time1/time2）支援小數點至第2位（正數，不可為0或負數）
-- [x] 多組計時管理：切換計時組時自動保留未儲存的修改，關閉視窗前若有未儲存變更將提示使用者
-- [x] 新增「全部儲存」按鈕（位於「新增」按鈕上方），可一次儲存所有計時組設定
-- [x] 個別計時儲存按鈕更名為「儲存該計時」並改為紅色背景以區分
-
 ### v1.3.1（2026-03-05）
 - [x] 修正雪花快捷鍵錯誤失效問題，將 `insert` 修正為 `Insert`
 - [x] 多組計時管理中的 `png_type` 以及 `sound_type` 下拉清單，聚焦時即時更新
@@ -239,6 +234,12 @@ pip install -r requirements.txt
 - [x] 修正雪花快捷鍵 insert → Insert
 - [x] png_type / sound_type 下拉清單聚焦即時更新
 - [x] 設定檔列表上限 10 → 12
+
+### v1.3.2（2026-03-11）
+- [x] 倒數時間（time1/time2）支援小數點至第2位（正數，不可為0或負數）
+- [x] 多組計時管理：切換計時組時自動保留未儲存的修改，關閉視窗前若有未儲存變更將提示使用者
+- [x] 新增「全部儲存」按鈕（位於「新增」按鈕上方），可一次儲存所有計時組設定
+- [x] 個別計時儲存按鈕更名為「儲存該計時」並改為紅色背景以區分
 ---
 
 ## 🔒 模組與資安說明
