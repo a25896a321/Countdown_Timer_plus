@@ -1,13 +1,13 @@
-## [ ⏬ 點此下載最新版本 v1.3.2 完整安裝包 ]
-https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.2/Countdown_Timer_plus_v1.3.2.rar
-## [ ⏬ 點此下載最新版本 v1.3.2 執行檔 ]
-https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.2_exe/Countdown_Timer_plus_v1.3.2.exe
+## [ ⏬ 點此下載最新版本 v1.3.3 完整安裝包 ]
+https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.3/Countdown_Timer_plus_v1.3.3.rar
+## [ ⏬ 點此下載最新版本 v1.3.3 執行檔安裝 ]
+https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.3_exe/Countdown_Timer_plus_v1.3.3.exe
 ## [ ⏬ 點此下載最新版本 v1.3.1 完整安裝包 ]
 https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.1/Countdown_Timer_plus_v1.3.1.rar
 
-> 版本：v1.3.2 | 作者：oo_jump | 協作：巴哈_波菜菜菜 | 平台：Windows
+> 版本：v1.3.3 | 作者：oo_jump | 協作：巴哈_波菜菜菜 | 平台：Windows
 
-# 倒數計時器 Plus (Countdown_Timer_plus_v1.3.2)
+# 倒數計時器 Plus (Countdown_Timer_plus_v1.3.3)
 
 ---
 
@@ -237,12 +237,15 @@ pip install -r requirements.txt
 - [x] png_type / sound_type 下拉清單聚焦即時更新
 - [x] 設定檔列表上限 10 → 12
 
+### v1.3.3（2026-03-11）
+- [x] 修正預設設定檔中「89%增傷時鐘」`time1` 由 `9.98` 更正為 `10.02`
+
 ### v1.3.2（2026-03-11）
 - [x] 倒數時間（time1/time2）支援小數點至第2位（正數，不可為0或負數）
 - [x] 多組計時管理：切換計時組時自動保留未儲存的修改，關閉視窗前若有未儲存變更將提示使用者
 - [x] 新增「全部儲存」按鈕（位於「新增」按鈕上方），可一次儲存所有計時組設定
 - [x] 個別計時儲存按鈕更名為「儲存該計時」並改為紅色背景以區分
-- [x] 更改預設並新增圖片（黑水、反盾，統一更改為倒數停止模式）
+
 ---
 
 ## 🔒 模組與資安說明
