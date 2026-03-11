@@ -1,7 +1,7 @@
 ## [ ⏬ 點此下載最新版本 v1.3.2 完整安裝包 ]
 https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.2/Countdown_Timer_plus_v1.3.2.rar
 ## [ ⏬ 點此下載最新版本 v1.3.2 執行檔 ]
-https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.2/Countdown_Timer_plus_v1.3.2.exe
+https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.2_exe/Countdown_Timer_plus_v1.3.2.exe
 ## [ ⏬ 點此下載最新版本 v1.3.1 完整安裝包 ]
 https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.1/Countdown_Timer_plus_v1.3.1.rar
 
