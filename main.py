@@ -2,7 +2,7 @@
 倒數計時器 主程式
 Countdown_Timer_plus - Main Application
 作者：oo_jump　協作：巴哈_波菜菜菜
-版本：v1.3.6
+版本：v1.3.7
 """
 
 import tkinter as tk
@@ -223,6 +223,17 @@ class CountdownTimerApp:
             bg=BG_MAIN, fg="#ffffff",
             anchor="e",
         ).pack(side=tk.RIGHT, padx=6)
+
+        tk.Button(
+            opacity_frame,
+            text=self.t("btn_howto"),
+            command=self._open_howto,
+            bg="#2c5f8a", fg=FG_TEXT,
+            activebackground=BG_ACCENT, activeforeground=FG_TEXT,
+            relief=tk.FLAT, bd=0, padx=8, pady=2,
+            font=(self.font_family, 9),
+            cursor="hand2",
+        ).pack(side=tk.RIGHT, padx=4)
 
         # 延遲模式：標籤 + 切換按鈕
         # 按鈕永遠顯示「目前正在使用的模式」，顏色也區分狀態
@@ -648,6 +659,54 @@ class CountdownTimerApp:
             pass
 
     # ── 贊助視窗 ──────────────────────────────────────────────────────────────
+
+    def _open_howto(self):
+        win = tk.Toplevel(self.root)
+        win.title(self.t("howto_title"))
+        win.configure(bg=BG_MAIN)
+        win.attributes("-topmost", True)
+        win.resizable(False, False)
+        if os.path.exists(self.icon_path):
+            try:
+                win.iconbitmap(self.icon_path)
+            except Exception:
+                pass
+
+        frame = tk.Frame(win, bg=BG_MAIN, padx=20, pady=16)
+        frame.pack(fill=tk.BOTH, expand=True)
+
+        # 可捲動文字區域
+        text_frame = tk.Frame(frame, bg=BG_MAIN)
+        text_frame.pack(fill=tk.BOTH, expand=True)
+
+        scrollbar = tk.Scrollbar(text_frame)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+        txt = tk.Text(
+            text_frame,
+            width=62, height=26,
+            font=(self.font_family, 10),
+            bg="#1e2240", fg="#e0e4ff",
+            relief=tk.FLAT, bd=0,
+            wrap=tk.WORD,
+            yscrollcommand=scrollbar.set,
+            state=tk.NORMAL,
+            padx=12, pady=10,
+            cursor="arrow",
+        )
+        txt.insert(tk.END, self.t("howto_content"))
+        txt.config(state=tk.DISABLED)
+        txt.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        scrollbar.config(command=txt.yview)
+
+        tk.Button(
+            frame, text=self.t("btn_close"),
+            command=win.destroy,
+            bg=BG_BTN, fg=FG_TEXT,
+            relief=tk.FLAT, padx=14, pady=5,
+            font=(self.font_family, 10),
+            cursor="hand2",
+        ).pack(pady=(10, 0))
 
     def _open_sponsor(self):
         win = tk.Toplevel(self.root)

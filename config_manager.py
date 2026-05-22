@@ -641,6 +641,75 @@ def make_default_config():
     }
 
 
+    # 預設檔10
+    profiles[9] = {
+        "name": "龍王計時（全部）",
+        "timers": [
+            {
+                "timer_name": "踩踏(每圈40s)",
+                "key": "`",
+                "mode": "loop",
+                "time1": 40.0,
+                "hotkey_action": "reset_start",
+                "image_mode": "cooldown",
+                "image1": "Horntail-foot",
+                "image2": None,
+                "sound1": {"file": "龍王-中文-女-瀟瀟1_踩", "mode": "once", "advance": 2, "frequency": 1},
+                "sound2": make_default_sound_config(),
+            },
+            {
+                "timer_name": "左手消技(約90s)",
+                "key": "Tab",
+                "mode": "stop",
+                "time1": 90.0,
+                "hotkey_action": "reset_start",
+                "image_mode": "default",
+                "image1": "Horntail-left hand",
+                "image2": None,
+                "sound1": {"file": "Horntail-left hand", "mode": "once", "advance": 2, "frequency": 1},
+                "sound2": make_default_sound_config(),
+            },
+            {
+                "timer_name": "中頭50%黑鎖(30s)",
+                "key": "CapsLock",
+                "mode": "stop",
+                "time1": 30.0,
+                "hotkey_action": "reset_start",
+                "image_mode": "default",
+                "image1": "Horntail-chain",
+                "image2": None,
+                "sound1": {"file": "龍王-中文-女-瀟瀟1_黑鎖", "mode": "once", "advance": 2, "frequency": 1},
+                "sound2": make_default_sound_config(),
+            },
+            {
+                "timer_name": "踩踏右專用(雙回合)",
+                "key": "`",
+                "mode": "dual",
+                "time1": 30.0,
+                "time2": 10.0,
+                "hotkey_action": "reset_start",
+                "image_mode": "default",
+                "image1": "Horntail-right foot",
+                "image2": "Horntail-right foot-light",
+                "sound1": {"file": "龍王-中文-女-瀟瀟1_右下", "mode": "once", "advance": 2, "frequency": 1},
+                "sound2": {"file": "龍王-中文-女-瀟瀟1_右上", "mode": "once", "advance": 2, "frequency": 1},
+            },
+            {
+                "timer_name": "踩踏左專用(雙回合)",
+                "key": "`",
+                "mode": "dual",
+                "time1": 30.0,
+                "time2": 10.0,
+                "hotkey_action": "reset_start",
+                "image_mode": "default",
+                "image1": "Horntail-left foot",
+                "image2": "Horntail-left foot-light",
+                "sound1": {"file": "龍王-中文-女-瀟瀟1_左下", "mode": "once", "advance": 2, "frequency": 1},
+                "sound2": {"file": "龍王-中文-女-瀟瀟1_左上", "mode": "once", "advance": 2, "frequency": 1},
+            },
+        ]
+    }
+
     return {
         "language": "zh_TW",
         "active_profile": 0,
