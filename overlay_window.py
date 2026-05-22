@@ -325,10 +325,11 @@ class OverlayWindow:
 
         self.win = win
 
-        # 控制列（拖曳＋齒輪），僅在需要時顯示
+        # 控制列（拖曳＋齒輪＋狀態標籤），僅在需要時顯示
         drag_lbl = None
         gear_lbl = None
-        if show_drag or show_gear:
+        self._status_lbl = None
+        if show_drag or show_gear or self.show_disabled_status:
             ctrl_bar = tk.Frame(win, bg=actual_bg, cursor="fleur")
             ctrl_bar.pack(fill=tk.X, padx=0, pady=0)
 
@@ -342,6 +343,18 @@ class OverlayWindow:
                 self._load_gear_icon(gear_lbl, actual_bg)
                 gear_lbl.pack(side=tk.LEFT, padx=0)
 
+            # 停用/啟用狀態標籤（控制列右側）
+            if self.show_disabled_status:
+                self._status_lbl = tk.Label(
+                    ctrl_bar,
+                    text="",
+                    font=(font_family, 9),
+                    bg=actual_bg,
+                    anchor="w",
+                    padx=6,
+                )
+                self._status_lbl.pack(side=tk.LEFT, padx=2)
+
             # 繫結拖曳事件（整個控制列 + 拖曳手把）
             ctrl_bar.bind("<ButtonPress-1>", self._on_drag_start)
             ctrl_bar.bind("<B1-Motion>", self._on_drag_move)
@@ -351,20 +364,6 @@ class OverlayWindow:
 
             if gear_lbl:
                 gear_lbl.bind("<Button-1>", lambda e: self.app.show_main())
-
-        # 停用/啟用狀態標籤
-        self._status_lbl = None
-        if self.show_disabled_status:
-            status_bar = tk.Frame(win, bg=actual_bg)
-            status_bar.pack(fill=tk.X, padx=4, pady=(0, 2))
-            self._status_lbl = tk.Label(
-                status_bar,
-                text="",
-                font=(font_family, 9),
-                bg=actual_bg,
-                anchor="w",
-            )
-            self._status_lbl.pack(side=tk.LEFT)
 
         # 計時器容器
         timer_container = tk.Frame(win, bg=actual_bg)

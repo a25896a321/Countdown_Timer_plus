@@ -7,7 +7,7 @@ Countdown Timer - Translation File
 TRANSLATIONS = {
     "zh_TW": {
         # 主視窗
-        "app_title": "倒數計時器_plus_v1.3.5",
+        "app_title": "倒數計時器_plus_v1.3.6",
         "hint_no_profile": "尚未載入設定檔",
         "hint_run_as_admin": "*請以系統管理員身分執行   作者：oo_jump（粉圓）",
         "hint_profile": "設定檔：",
@@ -18,7 +18,7 @@ TRANSLATIONS = {
         "btn_topmost_on": "📌 置頂：開",
         "btn_topmost_off": "📌 置頂：關",
         "btn_save_settings": "💾 設定檔",
-        "btn_settings": "⚙️ 計時管理",
+        "btn_settings": "⚙️ 編輯計時",
         "btn_overlay_settings": "🖥 懸浮窗設定",
         "btn_sponsor": "❤️ 贊助",
         "btn_lang_zh": "中文",
@@ -140,8 +140,8 @@ TRANSLATIONS = {
         "overlay_hide_idle_label": "隱藏未使用倒數：",
         "overlay_show_image_label": "顯示圖片：",
         "overlay_show_disabled_status_label": "顯示停用啟用狀態：",
-        "overlay_status_enabled": "● 啟用",
-        "overlay_status_disabled": "● 停用",
+        "overlay_status_enabled": "✅ 啟用",
+        "overlay_status_disabled": "⛔ 停用中",
         "overlay_num_bg_color_label": "數字背景顏色：",
         "overlay_name_bg_color_label": "名稱背景顏色：",
         "overlay_text_color_label": "數字顏色：",
@@ -201,7 +201,7 @@ TRANSLATIONS = {
 
     "en_US": {
         # Main window
-        "app_title": "Countdown_Timer_plus_v1.3.5",
+        "app_title": "Countdown_Timer_plus_v1.3.6",
         "hint_no_profile": "No profile loaded",
         "hint_run_as_admin": "*Run as Administrator   Author: oo_jump (Fenyuan)",
         "hint_profile": "Profile: ",
@@ -212,7 +212,7 @@ TRANSLATIONS = {
         "btn_topmost_on": "📌 Top: ON",
         "btn_topmost_off": "📌 Top: OFF",
         "btn_save_settings": "💾 Profiles",
-        "btn_settings": "⚙️ Timers",
+        "btn_settings": "⚙️ Edit Timers",
         "btn_overlay_settings": "🖥 Overlay",
         "btn_sponsor": "❤️ Sponsor",
         "btn_lang_zh": "中文",
@@ -334,8 +334,8 @@ TRANSLATIONS = {
         "overlay_hide_idle_label": "Hide Unused Timers: ",
         "overlay_show_image_label": "Show Images: ",
         "overlay_show_disabled_status_label": "Show Enable/Disable Status: ",
-        "overlay_status_enabled": "● Enabled",
-        "overlay_status_disabled": "● Disabled",
+        "overlay_status_enabled": "✅ Enabled",
+        "overlay_status_disabled": "⛔ Disabled",
         "overlay_num_bg_color_label": "Number BG Color: ",
         "overlay_name_bg_color_label": "Name BG Color: ",
         "overlay_text_color_label": "Number Color: ",

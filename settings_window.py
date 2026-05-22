@@ -1489,7 +1489,7 @@ class OverlaySettingsWindow:
         self._v_show_bg = tk.BooleanVar(value=cfg.get("show_bg", False))
         check_row("overlay_bg_label", self._v_show_bg)
 
-        self._v_show_num_bg = tk.BooleanVar(value=cfg.get("show_num_bg", False))
+        self._v_show_num_bg = tk.BooleanVar(value=cfg.get("show_num_bg", True))
         check_row("overlay_show_num_bg_label", self._v_show_num_bg)
 
         self._v_show_name_bg = tk.BooleanVar(value=cfg.get("show_name_bg", True))

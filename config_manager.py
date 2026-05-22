@@ -75,7 +75,7 @@ def make_default_overlay_settings():
         "show_drag": True,          # 顯示拖曳手把圖示
         "show_gear": True,          # 顯示齒輪設定按鈕
         # 數字背景
-        "show_num_bg": False,       # 顯示數字背景底色
+        "show_num_bg": True,        # 顯示數字背景底色
         "num_bg_color": "#1a1a2e",  # 數字背景顏色
         # 計時名稱
         "show_name_bg": True,           # 顯示計時名稱背景底色
