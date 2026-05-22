@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>倒數計時器 Plus — 使用者操作說明 v1.3.0</title>
+  <title>倒數計時器 Plus — 使用者操作說明 v1.4.1</title>
   <style>
     /* ── 全域 ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -232,7 +232,7 @@
   <h1>倒數計時器 Plus</h1>
   <p class="subtitle">Countdown_Timer_plus — 使用者操作說明</p>
   <div class="meta">
-    <span>版本：v1.3.0</span>
+    <span>版本：v1.4.1</span>
     <span>作者：oo_jump　｜　協作：巴哈_波菜菜菜</span>
     <span>平台：Windows 10+</span>
   </div>
@@ -379,7 +379,8 @@
     <tr><th>按鈕</th><th>功能說明</th></tr>
     <tr><td>📌 置頂</td><td>切換視窗是否永遠顯示於所有視窗最前方</td></tr>
     <tr><td>💾 設定檔</td><td>開啟設定檔管理視窗（10 組插槽）</td></tr>
-    <tr><td>⚙️ 計時管理</td><td>開啟多組計時器設定視窗</td></tr>
+    <tr><td>⚙️ 編輯計時</td><td>開啟多組計時器設定視窗</td></tr>
+    <tr><td>❓ 如何使用?</td><td>開啟使用說明視窗，顯示操作流程與快捷鍵總覽</td></tr>
     <tr><td>🖥 懸浮窗設定</td><td>調整懸浮窗外觀、位置、顏色等</td></tr>
     <tr><td>❤️ 贊助</td><td>作者支持連結</td></tr>
     <tr><td>中文 / EN</td><td>即時切換介面語言（繁體中文 / English）</td></tr>
@@ -447,8 +448,8 @@
 
 <!-- ═══════════════════════ §5 計時管理 ═══════════════════════ -->
 <div class="section section-break" id="s5">
-  <h2>5. 多組計時管理</h2>
-  <p>點擊 ⚙️ <strong>計時管理</strong> 開啟設定視窗。視窗左側為計時組列表，右側為詳細設定欄。</p>
+  <h2>5. 編輯計時</h2>
+  <p>點擊 ⚙️ <strong>編輯計時</strong> 開啟設定視窗。視窗左側為計時組列表，右側為詳細設定欄。</p>
 
   <h3 id="s5-1">5.1 新增 / 刪除 / 排序計時組</h3>
   <table>
@@ -490,6 +491,14 @@
     <strong>雙回合範例：</strong>機制A持續 40 秒 → 機制B持續 30 秒 → 回到機制A…如此循環。
   </div>
 
+  <h3>計時方向</h3>
+  <p>每個計時組可獨立設定計時方向：</p>
+  <table>
+    <tr><th>方向</th><th>說明</th></tr>
+    <tr><td>倒數（預設）</td><td>從設定時間倒數至 0，顯示剩餘時間</td></tr>
+    <tr><td>正數</td><td>從 0 開始向上累計，顯示已經過的時間，適合記錄事件發生後的經過時間</td></tr>
+  </table>
+
   <h3 id="s5-4">5.4 快捷鍵功能</h3>
   <p>按下快捷鍵時的觸發行為（可從兩種選項中選擇）：</p>
   <table>
@@ -523,7 +532,7 @@
     <tr><td>音效選擇</td><td>從 <code>sound_type</code> 資料夾中選擇 .mp3 / .wav 音效</td></tr>
     <tr><td>播放方式：單次播放</td><td>在「倒數結束前 N 秒」時播放一次</td></tr>
     <tr><td>播放方式：分段播放</td><td>按設定次數，在倒數過程中平均分散播放</td></tr>
-    <tr><td>提前幾秒</td><td>在倒數結束前幾秒觸發音效（例如設定 2 = 剩 2 秒時播放）</td></tr>
+    <tr><td>提前幾秒</td><td>在倒數結束前幾秒觸發音效（例如設定 2 = 剩 2 秒時播放；設定 0 = 時間恰好結束時播放）</td></tr>
     <tr><td>分段次數</td><td>分段播放模式下，音效共播放幾次</td></tr>
     <tr><td>▶ 測試</td><td>立即播放所選音效，確認效果</td></tr>
     <tr><td>📂 開啟資料夾</td><td>以檔案總管開啟 <code>sound_type</code> 資料夾</td></tr>
@@ -550,10 +559,11 @@
     <tr><td>顯示拖曳手把</td><td><span class="badge badge-green">✓ 開啟</span></td><td>懸浮窗左上角的移動圖示，長按可拖曳移動懸浮窗位置</td></tr>
     <tr><td>顯示設定齒輪</td><td><span class="badge badge-green">✓ 開啟</span></td><td>懸浮窗左上角的 ⚙ 按鈕，點擊可返回主視窗</td></tr>
     <tr><td>顯示背景底色</td><td><span class="badge badge-gray">✗ 關閉</span></td><td>是否顯示懸浮窗的整體背景色塊</td></tr>
-    <tr><td>顯示數字背景</td><td><span class="badge badge-gray">✗ 關閉</span></td><td>倒數數字是否加背景色塊</td></tr>
+    <tr><td>顯示數字背景</td><td><span class="badge badge-green">✓ 開啟</span></td><td>倒數數字是否加背景色塊</td></tr>
     <tr><td>顯示名稱背景</td><td><span class="badge badge-green">✓ 開啟</span></td><td>計時名稱文字是否加背景色塊</td></tr>
     <tr><td>隱藏未使用倒數</td><td><span class="badge badge-gray">✗ 關閉</span></td><td>勾選後，未啟動的計時組自動隱藏，倒數開始後才出現</td></tr>
     <tr><td>顯示圖片</td><td><span class="badge badge-green">✓ 開啟</span></td><td>是否顯示計時圖示；關閉後僅顯示倒數數字與計時名稱，適合純文字模式</td></tr>
+    <tr><td>顯示停用啟用狀態</td><td><span class="badge badge-green">✓ 開啟</span></td><td>在懸浮窗控制列右側顯示目前啟用／停用狀態；點擊可直接切換程式啟用狀態（✅ 啟用中 / ⛔ 停用中）</td></tr>
   </table>
 
   <h3 id="s6-3">6.3 顏色自訂</h3>
@@ -588,6 +598,7 @@
     <tr><th>操作</th><th>功能</th></tr>
     <tr><td>長按拖曳手把圖示</td><td>移動懸浮窗至螢幕任意位置（新位置自動儲存）</td></tr>
     <tr><td>點擊 ⚙ 齒輪圖示</td><td>返回主視窗（懸浮窗同時關閉）</td></tr>
+    <tr><td>點擊狀態標籤（✅／⛔）</td><td>直接切換程式啟用／停用狀態（需在懸浮窗設定中開啟「顯示停用啟用狀態」）</td></tr>
     <tr><td>按 F8（預設）</td><td>切換回主視窗 / 重新顯示懸浮窗</td></tr>
   </table>
   <h3>懸浮窗顯示說明</h3>
@@ -597,6 +608,7 @@
     <li>每個圖示上方顯示即時倒數秒數（大數字）</li>
     <li>圖示下方（或其他設定位置）顯示計時名稱</li>
     <li>倒數最後 3 秒時圖示會開始閃爍警示（依圖示效果模式）</li>
+    <li>切換至懸浮模式後，<strong>工作列圖示仍保留</strong>，可隨時從工作列還原主視窗</li>
   </ul>
 </div>
 
@@ -622,14 +634,14 @@
   <ol>
     <li>將圖片（<code>.png</code> / <code>.jpg</code> / <code>.jpeg</code> / <code>.gif</code>）放入 <code>png_type</code> 資料夾</li>
     <li>可在 <code>png_type</code> 內建立子資料夾分類，程式會自動遞迴掃描</li>
-    <li>重新開啟計時管理設定視窗，新圖片即出現在下拉清單中</li>
+    <li>重新開啟編輯計時設定視窗，新圖片即出現在下拉清單中</li>
   </ol>
 
   <h3 id="s9-2">9.2 新增音效</h3>
   <ol>
     <li>將音效（<code>.mp3</code> / <code>.wav</code>）放入 <code>sound_type</code> 資料夾</li>
     <li>可在 <code>sound_type</code> 內建立子資料夾分類</li>
-    <li>重新開啟計時管理設定視窗，新音效即出現在下拉清單中</li>
+    <li>重新開啟編輯計時設定視窗，新音效即出現在下拉清單中</li>
   </ol>
   <div class="tip">建議使用清晰、簡短的語音提示音效，搭配「提前幾秒」設定，達到最佳提示效果。</div>
 </div>
@@ -662,7 +674,7 @@
   <hr/>
   <div class="footer">
     <p>感謝使用倒數計時器 Plus！如有問題或建議，歡迎聯繫作者。</p>
-    <p style="margin-top:6px;">作者：oo_jump　｜　協作：巴哈_波菜菜菜　｜　版本：v1.3.0</p>
+    <p style="margin-top:6px;">作者：oo_jump　｜　協作：巴哈_波菜菜菜　｜　版本：v1.4.1</p>
   </div>
 </div>
 
