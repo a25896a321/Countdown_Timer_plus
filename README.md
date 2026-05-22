@@ -1,18 +1,18 @@
 ## [ ⏬ 點此下載最新版本 v1.4.1 完整安裝包 ]
 https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.4.1/Countdown_Timer_plus_v1.4.1.rar
 
-# 教學（保留舊版設定、如何新增圖檔.音檔）：https://canva.link/3na9r3dkvlnxvi4
-# 新增圖檔> Nexon 楓之谷世界資源網站：https://maplestoryworlds.nexon.com/zh-tw/resource
-# 新增音檔> ttsmaker AI免費語音網站：https://ttsmaker.com/
+- 教學（保留舊版設定、如何新增圖檔.音檔）：https://canva.link/3na9r3dkvlnxvi4
+- 新增圖檔> Nexon 楓之谷世界資源網站：https://maplestoryworlds.nexon.com/zh-tw/resource
+- 新增音檔> ttsmaker AI免費語音網站：https://ttsmaker.com/
 
-# [ ⏬ 點此下載最新版本 v1.3.3 完整安裝包 ]
+- [ ⏬ 點此下載最新版本 v1.3.3 完整安裝包 ]
 https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.3/Countdown_Timer_plus_v1.3.3.rar
-# [ ⏬ 點此下載最新版本 v1.3.3 執行檔安裝 ]
+- [ ⏬ 點此下載最新版本 v1.3.3 執行檔安裝 ]
 https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.3_exe/Countdown_Timer_plus_v1.3.3.exe
-# [ ⏬ 點此下載最新版本 v1.3.1 完整安裝包 ]
+- [ ⏬ 點此下載最新版本 v1.3.1 完整安裝包 ]
 https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.1/Countdown_Timer_plus_v1.3.1.rar
 
-> 版本：v1.4.1 | 作者：oo_jump | 協作：巴哈_波菜菜菜 | 平台：Windows
+> 最新版本：v1.4.1 | 作者：oo_jump | 協作：巴哈_波菜菜菜 | 平台：Windows
 
 # 倒數計時器 Plus (Countdown_Timer_plus_v1.4.1)
 
