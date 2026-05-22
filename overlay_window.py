@@ -343,17 +343,21 @@ class OverlayWindow:
                 self._load_gear_icon(gear_lbl, actual_bg)
                 gear_lbl.pack(side=tk.LEFT, padx=0)
 
-            # 停用/啟用狀態標籤（控制列右側）
+            # 停用/啟用切換按鈕（控制列右側，固定不透明背景）
             if self.show_disabled_status:
                 self._status_lbl = tk.Label(
                     ctrl_bar,
                     text="",
                     font=(font_family, 9),
-                    bg=actual_bg,
+                    bg="#1a4a2e",    # 初始為啟用色；_update_display 會動態更新
+                    fg="#90ee90",
                     anchor="w",
-                    padx=6,
+                    padx=8, pady=1,
+                    cursor="hand2",
+                    relief=tk.FLAT,
                 )
-                self._status_lbl.pack(side=tk.LEFT, padx=2)
+                self._status_lbl.pack(side=tk.LEFT, padx=4)
+                self._status_lbl.bind("<Button-1>", self._on_status_click)
 
             # 繫結拖曳事件（整個控制列 + 拖曳手把）
             ctrl_bar.bind("<ButtonPress-1>", self._on_drag_start)
@@ -453,6 +457,11 @@ class OverlayWindow:
             widget.grid(row=0, column=i, padx=spacing, pady=2)
             self.timer_widgets.append(widget)
 
+    def _on_status_click(self, event):
+        """點擊狀態按鈕切換啟用/停用，並同步主視窗的切換按鈕"""
+        self.app._toggle_all_disabled()
+        return "break"    # 阻止事件冒泡至拖曳處理器
+
     def _on_drag_start(self, event):
         self._drag_x = event.x_root - self.win.winfo_x()
         self._drag_y = event.y_root - self.win.winfo_y()
@@ -472,12 +481,18 @@ class OverlayWindow:
 
     def _update_display(self):
         """更新所有計時器顯示，並依據 hide_idle_timers 決定是否顯示"""
-        # 更新停用/啟用狀態標籤
+        # 更新停用/啟用切換按鈕
         if self._status_lbl is not None:
             if self.engine.all_disabled:
-                self._status_lbl.config(text=self.t("overlay_status_disabled"), fg="#ff6b6b")
+                self._status_lbl.config(
+                    text=self.t("overlay_status_disabled"),
+                    bg="#4a1a1a", fg="#ff9999",
+                )
             else:
-                self._status_lbl.config(text=self.t("overlay_status_enabled"), fg="#51cf66")
+                self._status_lbl.config(
+                    text=self.t("overlay_status_enabled"),
+                    bg="#1a4a2e", fg="#90ee90",
+                )
 
         timers = self.engine.get_timers()
         for i, widget in enumerate(self.timer_widgets):
