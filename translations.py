@@ -7,7 +7,7 @@ Countdown Timer - Translation File
 TRANSLATIONS = {
     "zh_TW": {
         # 主視窗
-        "app_title": "倒數計時器_plus_v1.3.9",
+        "app_title": "倒數計時器_plus_v1.4.0",
         "hint_no_profile": "尚未載入設定檔",
         "hint_run_as_admin": "*需系統管理員執行* 作者:oo_jump(粉圓)",
         "hint_profile": "設定檔：",
@@ -45,6 +45,10 @@ TRANSLATIONS = {
             "          ⚠ other 子資料夾的檔案不會被讀取\n\n"
             "步驟 5　儲存設定\n"
             "        完成所有設定後點選「💾 儲存」，設定即生效。\n\n"
+            "【懸浮窗設定】\n\n"
+            "        設定背景與顏色\n"
+            "        設定懸浮框模式大小\n"
+            "        設定顯示狀態\n\n"
             "【程序快捷鍵（預設）】\n\n"
             "        F6　暫停 — 將所有計時器歸零\n"
             "        F7　停用 / 啟用 — 計時快捷鍵功能暫時失效\n"
@@ -226,7 +230,7 @@ TRANSLATIONS = {
 
     "en_US": {
         # Main window
-        "app_title": "Countdown_Timer_plus_v1.3.9",
+        "app_title": "Countdown_Timer_plus_v1.4.0",
         "hint_no_profile": "No profile loaded",
         "hint_run_as_admin": "*Run as Administrator   Author: oo_jump (Fenyuan)",
         "hint_profile": "Profile: ",
@@ -264,6 +268,10 @@ TRANSLATIONS = {
             "          ⚠ Files in 'other' sub-folder are NOT loaded\n\n"
             "Step 5  Save Settings\n"
             "        Click '💾 Save' after finishing all settings.\n\n"
+            "[Overlay Settings]\n\n"
+            "        Configure background and colors\n"
+            "        Configure overlay window size\n"
+            "        Configure display options\n\n"
             "[Default Hotkeys]\n\n"
             "        F6  Pause   — Reset all timers to zero\n"
             "        F7  Toggle  — Enable / Disable timer hotkeys\n"
