@@ -1,7 +1,8 @@
 ## [ ⏬ 點此下載  ]
 -  [  下載 v1.4.1 最新版本（完整安裝） ] https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.4.1/Countdown_Timer_plus_v1.4.1.rar
 
-- 教學（保留舊版原設定、如何新增圖檔.音檔）：https://canva.link/3na9r3dkvlnxvi4
+- 影片教學：https://youtu.be/iB75XsHzv-U
+- 教學圖（保留舊版原設定、如何新增圖檔.音檔）：https://canva.link/3na9r3dkvlnxvi4
 - 自訂新增圖檔 > 請至 Nexon 楓之谷世界資源網站：https://maplestoryworlds.nexon.com/zh-tw/resource
 - 自訂新增音檔 > 請至 ttsmaker AI免費語音網站：https://ttsmaker.com/
 
