@@ -5,9 +5,9 @@ https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.3_exe/
 ## [ ⏬ 點此下載最新版本 v1.3.1 完整安裝包 ]
 https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.1/Countdown_Timer_plus_v1.3.1.rar
 
-> 版本：v1.3.3 | 作者：oo_jump | 協作：巴哈_波菜菜菜 | 平台：Windows
+> 版本：v1.4.1 | 作者：oo_jump | 協作：巴哈_波菜菜菜 | 平台：Windows
 
-# 倒數計時器 Plus (Countdown_Timer_plus_v1.3.3)
+# 倒數計時器 Plus (Countdown_Timer_plus_v1.4.1)
 
 ---
 
@@ -245,6 +245,15 @@ pip install -r requirements.txt
 
 ### v1.3.3（2026-03-11）
 - [x] 修正預設設定檔中「89%增傷時鐘」`time1` 由 `9.98` 更正為 `10.02`
+
+### v1.4.1（2026-05-23）
+- [x] 新增正數計時功能，可自行切換（正計時 / 倒計時）
+- [x] 允許音效提前x秒，可設為0，於倒數抵達後才響鈴
+- [x] 新增"如何使用"說明按鈕
+- [x] 新增懸浮窗口模式的啟用/停用按鈕（並新增在懸浮窗設定，可自行決定是否開啟顯示）
+- [x] 新增龍王 Boss 的設定檔
+- [x] 搬移 boss、skill、time 資料夾至 other 資料夾內
+
 ---
 
 ## 🔒 模組與資安說明
