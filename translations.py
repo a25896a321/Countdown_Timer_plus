@@ -7,7 +7,7 @@ Countdown Timer - Translation File
 TRANSLATIONS = {
     "zh_TW": {
         # 主視窗
-        "app_title": "倒數計時器_plus_v1.3.3",
+        "app_title": "倒數計時器_plus_v1.3.5",
         "hint_no_profile": "尚未載入設定檔",
         "hint_run_as_admin": "*請以系統管理員身分執行   作者：oo_jump（粉圓）",
         "hint_profile": "設定檔：",
@@ -84,6 +84,9 @@ TRANSLATIONS = {
         "mode_loop": "自動循環倒數",
         "mode_stop": "倒數後停止",
         "mode_dual": "雙回合切換",
+        "timer_direction_label": "計時方向：",
+        "direction_countdown": "倒數",
+        "direction_countup": "正數",
         "time1_label": "倒數時間（秒）：",
         "time2_label": "回合二時間（秒）：",
         "hotkey_action_label": "快捷鍵功能：",
@@ -136,6 +139,9 @@ TRANSLATIONS = {
         "overlay_show_name_bg_label": "顯示名稱背景：",
         "overlay_hide_idle_label": "隱藏未使用倒數：",
         "overlay_show_image_label": "顯示圖片：",
+        "overlay_show_disabled_status_label": "顯示停用啟用狀態：",
+        "overlay_status_enabled": "● 啟用",
+        "overlay_status_disabled": "● 停用",
         "overlay_num_bg_color_label": "數字背景顏色：",
         "overlay_name_bg_color_label": "名稱背景顏色：",
         "overlay_text_color_label": "數字顏色：",
@@ -195,7 +201,7 @@ TRANSLATIONS = {
 
     "en_US": {
         # Main window
-        "app_title": "Countdown_Timer_plus_v1.3.3",
+        "app_title": "Countdown_Timer_plus_v1.3.5",
         "hint_no_profile": "No profile loaded",
         "hint_run_as_admin": "*Run as Administrator   Author: oo_jump (Fenyuan)",
         "hint_profile": "Profile: ",
@@ -272,6 +278,9 @@ TRANSLATIONS = {
         "mode_loop": "Auto Loop",
         "mode_stop": "Stop on Zero",
         "mode_dual": "Dual Round",
+        "timer_direction_label": "Direction: ",
+        "direction_countdown": "Count Down",
+        "direction_countup": "Count Up",
         "time1_label": "Countdown (seconds): ",
         "time2_label": "Round 2 Time (seconds): ",
         "hotkey_action_label": "Hotkey Action: ",
@@ -324,6 +333,9 @@ TRANSLATIONS = {
         "overlay_show_name_bg_label": "Show Name BG: ",
         "overlay_hide_idle_label": "Hide Unused Timers: ",
         "overlay_show_image_label": "Show Images: ",
+        "overlay_show_disabled_status_label": "Show Enable/Disable Status: ",
+        "overlay_status_enabled": "● Enabled",
+        "overlay_status_disabled": "● Disabled",
         "overlay_num_bg_color_label": "Number BG Color: ",
         "overlay_name_bg_color_label": "Name BG Color: ",
         "overlay_text_color_label": "Number Color: ",

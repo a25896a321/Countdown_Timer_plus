@@ -712,6 +712,21 @@ class TimerMgrWindow:
             )
             rb.pack(side=tk.LEFT, padx=4)
 
+        # 計時方向（倒數 / 正數）
+        r = row_frame()
+        lbl(r, "timer_direction_label").pack(side=tk.LEFT)
+        self._v_direction = tk.StringVar(value=timer_cfg.get("direction", "countdown"))
+        for val, key in [("countdown", "direction_countdown"), ("countup", "direction_countup")]:
+            rb = tk.Radiobutton(
+                r, text=self.t(key), value=val,
+                variable=self._v_direction,
+                bg=THEME["bg"], fg=THEME["text"],
+                activebackground=THEME["bg"],
+                selectcolor=THEME["entry_bg"],
+                font=(ff, 9),
+            )
+            rb.pack(side=tk.LEFT, padx=4)
+
         # 倒數時間1
         r = row_frame()
         lbl(r, "time1_label").pack(side=tk.LEFT)
@@ -1122,6 +1137,7 @@ class TimerMgrWindow:
             "timer_name": name,
             "key": self._editing_timer.get("key"),
             "mode": mode,
+            "direction": self._v_direction.get() if hasattr(self, "_v_direction") else "countdown",
             "time1": t1,
             "time2": t2,
             "hotkey_action": self._v_action.get(),
@@ -1228,6 +1244,8 @@ class TimerMgrWindow:
             entry['key'] = self._editing_timer.get('key')
         if hasattr(self, '_v_mode'):
             entry['mode'] = self._v_mode.get()
+        if hasattr(self, '_v_direction'):
+            entry['direction'] = self._v_direction.get()
         if hasattr(self, '_v_time1'):
             try:
                 t1 = round(float(self._v_time1.get()), 2)
@@ -1483,6 +1501,9 @@ class OverlaySettingsWindow:
         self._v_show_image = tk.BooleanVar(value=cfg.get("show_image", True))
         check_row("overlay_show_image_label", self._v_show_image)
 
+        self._v_show_disabled_status = tk.BooleanVar(value=cfg.get("show_disabled_status", True))
+        check_row("overlay_show_disabled_status_label", self._v_show_disabled_status)
+
         # ── 顏色選取群組 ──────────────────────────────────────────────────────
         sep()
         self._v_bg_color = tk.StringVar(value=cfg.get("bg_color", "#1a1a2e"))
@@ -1624,6 +1645,7 @@ class OverlaySettingsWindow:
             "name_align": name_align,
             "hide_idle_timers": self._v_hide_idle.get(),
             "show_image": self._v_show_image.get(),
+            "show_disabled_status": self._v_show_disabled_status.get(),
         }
 
     def _save(self):

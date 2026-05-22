@@ -274,6 +274,8 @@ class OverlayWindow:
         self._update_job = None
         self.hide_idle_timers = False   # 由 _build / rebuild_timers 更新
         self.show_image = True
+        self.show_disabled_status = True
+        self._status_lbl = None
 
         self._build()
 
@@ -301,6 +303,7 @@ class OverlayWindow:
         name_align    = overlay_cfg.get("name_align", "center")
         self.hide_idle_timers = overlay_cfg.get("hide_idle_timers", False)
         self.show_image = overlay_cfg.get("show_image", True)
+        self.show_disabled_status = overlay_cfg.get("show_disabled_status", True)
 
         if self.app.os_type == "Windows":
             font_family = "Microsoft JhengHei"
@@ -348,6 +351,20 @@ class OverlayWindow:
 
             if gear_lbl:
                 gear_lbl.bind("<Button-1>", lambda e: self.app.show_main())
+
+        # 停用/啟用狀態標籤
+        self._status_lbl = None
+        if self.show_disabled_status:
+            status_bar = tk.Frame(win, bg=actual_bg)
+            status_bar.pack(fill=tk.X, padx=4, pady=(0, 2))
+            self._status_lbl = tk.Label(
+                status_bar,
+                text="",
+                font=(font_family, 9),
+                bg=actual_bg,
+                anchor="w",
+            )
+            self._status_lbl.pack(side=tk.LEFT)
 
         # 計時器容器
         timer_container = tk.Frame(win, bg=actual_bg)
@@ -456,6 +473,13 @@ class OverlayWindow:
 
     def _update_display(self):
         """更新所有計時器顯示，並依據 hide_idle_timers 決定是否顯示"""
+        # 更新停用/啟用狀態標籤
+        if self._status_lbl is not None:
+            if self.engine.all_disabled:
+                self._status_lbl.config(text=self.t("overlay_status_disabled"), fg="#ff6b6b")
+            else:
+                self._status_lbl.config(text=self.t("overlay_status_enabled"), fg="#51cf66")
+
         timers = self.engine.get_timers()
         for i, widget in enumerate(self.timer_widgets):
             if i >= len(timers):
@@ -495,6 +519,7 @@ class OverlayWindow:
         name_align    = overlay_cfg.get("name_align", "center")
         self.hide_idle_timers = overlay_cfg.get("hide_idle_timers", False)
         self.show_image = overlay_cfg.get("show_image", True)
+        self.show_disabled_status = overlay_cfg.get("show_disabled_status", True)
         if self.app.os_type == "Windows":
             font_family = "Microsoft JhengHei"
         else:

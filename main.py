@@ -2,7 +2,7 @@
 倒數計時器 主程式
 Countdown_Timer_plus - Main Application
 作者：oo_jump　協作：巴哈_波菜菜菜
-版本：v1.3.3
+版本：v1.3.5
 """
 
 import tkinter as tk
@@ -98,6 +98,7 @@ class CountdownTimerApp:
         self.engine.start_engine()
 
         root.protocol("WM_DELETE_WINDOW", self._on_closing)
+        root.bind("<Map>", self._on_root_map)
 
     # ── 翻譯 ──────────────────────────────────────────────────────────────────
 
@@ -530,7 +531,7 @@ class CountdownTimerApp:
         if self._overlay is None or not self._overlay.is_alive():
             self._overlay = OverlayWindow(self)
         self._overlay_mode = True
-        self.root.withdraw()
+        self.root.iconify()
         self.timer_switch_btn.config(text=self.t("btn_overlay_close"))
 
     def show_main(self):
@@ -541,6 +542,11 @@ class CountdownTimerApp:
             self._overlay = None
         self.root.deiconify()
         self.timer_switch_btn.config(text=self.t("btn_overlay_open"))
+
+    def _on_root_map(self, event):
+        """當主視窗從工作列還原時，若仍在懸浮模式則切換回主視窗"""
+        if event.widget is self.root and self._overlay_mode:
+            self.root.after(0, self.show_main)
 
     # ── 設定視窗（唯一性保護） ────────────────────────────────────────────────
 

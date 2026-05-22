@@ -42,6 +42,7 @@ def make_default_timer():
         "timer_name": "新計時",
         "key": None,
         "mode": "loop",          # loop / stop / dual
+        "direction": "countdown",         # countdown / countup
         "time1": 60,
         "time2": 30,
         "hotkey_action": "reset_start",   # reset_start / toggle
@@ -84,6 +85,8 @@ def make_default_overlay_settings():
         "name_align": "center",          # left / center / right
         # 顯示控制
         "hide_idle_timers": False,       # 隱藏未倒數中的計時器
+        "show_disabled_status": True,    # 顯示停用/啟用狀態標籤
+        "show_image": True,              # 顯示圖片
     }
 
 

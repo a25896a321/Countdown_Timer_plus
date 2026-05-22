@@ -96,6 +96,10 @@ class TimerInstance:
     def is_idle(self) -> bool:
         return self.state == STATE_IDLE
 
+    @property
+    def direction(self) -> str:
+        return self.config.get("direction", "countdown")
+
     # ── 控制方法 ────────────────────────────────────────────────────────────
 
     def trigger_hotkey(self):
@@ -239,11 +243,17 @@ class TimerInstance:
                 new_remaining  = max(0.0, self.time1 - total_elapsed)
                 self.remaining = new_remaining
                 if new_remaining <= 0:
+                    self.remaining = 0.0
+                    # 在歸零時檢查 advance=0 的音效觸發
+                    _trigger_at_zero = None
+                    if self._last_second != 0:
+                        self._last_second = 0
+                        _trigger_at_zero = self._check_sound_trigger(0)
                     self._stop_flash()
                     self.flash_visible = False   # 顯示灰階
                     self.state         = STATE_FINISHED
                     self._epoch_start  = None
-                    return None
+                    return _trigger_at_zero
 
             current_second = int(self.remaining + 0.5)
 
@@ -283,16 +293,20 @@ class TimerInstance:
         frequency = int(sound_cfg.get("frequency", 1))
 
         if play_mode == "once":
-            # 在提前 advance 秒時觸發一次
-            if current_second == advance and current_second > 0:
+            # advance=0 代表時間歸零時播放；其他值代表提前 advance 秒播放
+            if current_second == advance:
                 flag_attr = f"_sound{round_num}_played"
                 if not getattr(self, flag_attr, False):
                     setattr(self, flag_attr, True)
                     return (round_num, sound_cfg)
         else:
-            # 分段播放邏輯
-            total_time = self.current_total_time
-            if frequency > 0 and advance > 0:
+            # 分段播放邏輯（advance=0 時不分段，直接於時間歸零觸發一次）
+            if advance == 0:
+                flag_attr = f"_sound{round_num}_played"
+                if current_second == 0 and not getattr(self, flag_attr, False):
+                    setattr(self, flag_attr, True)
+                    return (round_num, sound_cfg)
+            elif frequency > 0:
                 interval = advance / frequency
                 for i in range(frequency):
                     trigger_time = advance - (i * interval)
@@ -327,7 +341,12 @@ class TimerInstance:
     # ── 顯示輔助 ─────────────────────────────────────────────────────────────
 
     def get_display_seconds(self) -> int:
-        """取得顯示用的秒數（四捨五入）"""
+        """取得顯示用的秒數（四捨五入）。
+        countdown：顯示剩餘秒數；countup：顯示已用秒數（當前階段）。
+        """
+        if self.direction == "countup":
+            elapsed = self.current_total_time - self.remaining
+            return int(max(0.0, elapsed) + 0.5)
         return int(self.remaining + 0.5)
 
     def get_current_image_name(self) -> str:
