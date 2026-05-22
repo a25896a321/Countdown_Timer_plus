@@ -7,9 +7,9 @@ Countdown Timer - Translation File
 TRANSLATIONS = {
     "zh_TW": {
         # 主視窗
-        "app_title": "倒數計時器_plus_v1.3.7",
+        "app_title": "倒數計時器_plus_v1.3.8",
         "hint_no_profile": "尚未載入設定檔",
-        "hint_run_as_admin": "*需系統管理員執行 作者:oo_jump(粉圓)",
+        "hint_run_as_admin": "*需系統管理員執行* 作者:oo_jump(粉圓)",
         "hint_profile": "設定檔：",
         "hint_paused": "【已暫停】",
         "hint_disabled": "【已停用】",
@@ -27,7 +27,7 @@ TRANSLATIONS = {
         "btn_switch_off": "⛔ 已停用",
         "btn_overlay_open": "⇄ 切換懸浮模式",
         "btn_overlay_close": "🗔 返回主視窗",
-        "btn_howto": "❓ 如何使用?",
+        "btn_howto": "❓ 如何使用",
         "howto_title": "使用教學",
         "howto_content": (
             "【使用流程】\n\n"
@@ -226,7 +226,7 @@ TRANSLATIONS = {
 
     "en_US": {
         # Main window
-        "app_title": "Countdown_Timer_plus_v1.3.7",
+        "app_title": "Countdown_Timer_plus_v1.3.8",
         "hint_no_profile": "No profile loaded",
         "hint_run_as_admin": "*Run as Administrator   Author: oo_jump (Fenyuan)",
         "hint_profile": "Profile: ",

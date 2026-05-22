@@ -666,7 +666,7 @@ def make_default_config():
                 "image_mode": "default",
                 "image1": "Horntail-left hand",
                 "image2": None,
-                "sound1": {"file": "Horntail-left hand", "mode": "once", "advance": 2, "frequency": 1},
+                "sound1": {"file": "龍王-中文-女-瀟瀟1_消技", "mode": "once", "advance": 2, "frequency": 1},
                 "sound2": make_default_sound_config(),
             },
             {
@@ -682,7 +682,19 @@ def make_default_config():
                 "sound2": make_default_sound_config(),
             },
             {
-                "timer_name": "踩踏右專用(雙回合)",
+                "timer_name": "中頭吐火(60s)",
+                "key": "Tab",
+                "mode": "stop",
+                "time1": 60.0,
+                "hotkey_action": "reset_start",
+                "image_mode": "default",
+                "image1": "Horntail-fire",
+                "image2": None,
+                "sound1": {"file": "Horntail-left hand", "mode": "once", "advance": 2, "frequency": 1},
+                "sound2": make_default_sound_config(),
+            },
+            {
+                "timer_name": "右踩踏專用(雙回合)",
                 "key": "`",
                 "mode": "dual",
                 "time1": 30.0,
@@ -695,7 +707,7 @@ def make_default_config():
                 "sound2": {"file": "龍王-中文-女-瀟瀟1_右上", "mode": "once", "advance": 2, "frequency": 1},
             },
             {
-                "timer_name": "踩踏左專用(雙回合)",
+                "timer_name": "左踩踏專用(雙回合)",
                 "key": "`",
                 "mode": "dual",
                 "time1": 30.0,
