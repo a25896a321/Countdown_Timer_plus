@@ -1,5 +1,5 @@
 ## [ ⏬ 點此下載  ]
--  [  下載 v1.4.1 最新版本 ] https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.4.1/Countdown_Timer_plus_v1.4.1.rar
+-  [  下載 v1.4.1 最新版本（完整安裝） ] https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.4.1/Countdown_Timer_plus_v1.4.1.rar
 
 - 教學（保留舊版原設定、如何新增圖檔.音檔）：https://canva.link/3na9r3dkvlnxvi4
 - 自訂新增圖檔 > 請至 Nexon 楓之谷世界資源網站：https://maplestoryworlds.nexon.com/zh-tw/resource
@@ -12,7 +12,7 @@ https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.3/Coun
 https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.3_exe/Countdown_Timer_plus_v1.3.3.exe
 - [ ⏬ 點此下載最新版本 v1.3.1 完整安裝包 ]
 https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.3.1/Countdown_Timer_plus_v1.3.1.rar
-
+-  [ 龍王設定檔（建議下載完整安裝，此設定圖片、音檔需自行設定） ] https://github.com/a25896a321/Countdown_Timer_plus/releases/download/v1.4.1_config/龍王計時（全部）.json
 
 # 倒數計時器 Plus (Countdown_Timer_plus_v1.4.1)
 > 最新版本：v1.4.1 | 作者：oo_jump | 協作：巴哈_波菜菜菜 | 平台：Windows
